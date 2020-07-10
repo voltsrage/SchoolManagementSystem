@@ -21,12 +21,16 @@ namespace SchoolDBAccess
             this.ClassSubjectTables = new HashSet<ClassSubjectTable>();
             this.SessionProgramSubjectSettingTables = new HashSet<SessionProgramSubjectSettingTable>();
         }
-    
+
+        [Display(Name = "Subject ID")]
         public int SubjectID { get; set; }
+        [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
         public string Name { get; set; }
         [DataType(DataType.Date)]
+        [Display(Name = "Registration Date")]
         public Nullable<System.DateTime> RegDate { get; set; }
+        [Display(Name = "Total Marks")]
         public Nullable<int> TotalMarks { get; set; }
         public string Description { get; set; }
     

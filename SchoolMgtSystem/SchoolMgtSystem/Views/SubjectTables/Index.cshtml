@@ -1,10 +1,10 @@
-﻿@model IEnumerable<SchoolDBAccess.UserTable>
+﻿@model IEnumerable<SchoolDBAccess.SubjectTable>
 
 @{
-    ViewBag.Title = "Users";
+    ViewBag.Title = "Subjects";
 }
 
-<h2>All Users</h2>
+<h2>All Subjects</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
@@ -19,52 +19,45 @@
                 <thead>
                     <tr>
                         <th>
-                            Full Name
+                            @Html.DisplayNameFor(model => model.Name)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.UserName)
+                            @Html.DisplayNameFor(model => model.RegDate)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ContactNo)
+                            @Html.DisplayNameFor(model => model.TotalMarks)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.EmailAddress)
+                            @Html.DisplayNameFor(model => model.Description)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Address)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.UserTypeTable.TypeName)
+                            @Html.DisplayNameFor(model => model.UserTable.FullName)
                         </th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach (var item in Model)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.FullName)
+                                @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.UserName)
+                                @Html.DisplayFor(modelItem => item.RegDate)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.ContactNo)
+                                @Html.DisplayFor(modelItem => item.TotalMarks)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.EmailAddress)
+                                @Html.DisplayFor(modelItem => item.Description)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Address)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UserTypeTable.TypeName)
+                                @Html.DisplayFor(modelItem => item.UserTable.FullName)
                             </td>
                             <td class="btn-group">
-                                @Html.ActionLink("Edit", "Edit", new { id = item.UserID }, new { @class = "btn btn-primary" }) 
-                                @Html.ActionLink("Details", "Details", new { id = item.UserID }, new { @class = "btn btn-info" }) 
+                                @Html.ActionLink("Edit", "Edit", new { id = item.UserID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Details", "Details", new { id = item.UserID }, new { @class = "btn btn-info" })
                                 @Html.ActionLink("Delete", "Delete", new { id = item.UserID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>

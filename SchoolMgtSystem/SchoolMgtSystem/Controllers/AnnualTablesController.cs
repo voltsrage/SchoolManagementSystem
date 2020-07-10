@@ -11,20 +11,19 @@ using SchoolMgtSystem.CustomerFilters;
 
 namespace SchoolMgtSystem.Controllers
 {
-    public class UserTablesController : Controller
+    public class AnnualTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
 
-
-        // GET: UserTables
+        // GET: AnnualTables
         [UserAuthorizationFilter]
         public ActionResult Index()
         {
-            var userTables = db.UserTables.Include(u => u.UserTypeTable);
-            return View(userTables.ToList());
+            var annualTables = db.AnnualTables.Include(a => a.ProgramTable).Include(a => a.UserTable);
+            return View(annualTables.ToList());
         }
 
-        // GET: UserTables/Details/5
+        // GET: AnnualTables/Details/5
         [UserAuthorizationFilter]
         public ActionResult Details(int? id)
         {
@@ -32,42 +31,44 @@ namespace SchoolMgtSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserTable userTable = db.UserTables.Find(id);
-            if (userTable == null)
+            AnnualTable annualTable = db.AnnualTables.Find(id);
+            if (annualTable == null)
             {
                 return HttpNotFound();
             }
-            return View(userTable);
+            return View(annualTable);
         }
 
-        // GET: UserTables/Create
+        // GET: AnnualTables/Create
         [UserAuthorizationFilter]
         public ActionResult Create()
         {
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName");
+            ViewBag.ProgramID = new SelectList(db.ProgramTables, "ProgramID", "Name");
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName");
             return View();
         }
 
-        // POST: UserTables/Create
+        // POST: AnnualTables/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [UserAuthorizationFilter]
-        public ActionResult Create(UserTable userTable)
+        public ActionResult Create([Bind(Include = "AnnualID,UserID,ProgramID,Title,Fees,IsActive,Description")] AnnualTable annualTable)
         {
             if (ModelState.IsValid)
             {
-                db.UserTables.Add(userTable);
+                db.AnnualTables.Add(annualTable);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName", userTable.UserTypeID);
-            return View(userTable);
+            ViewBag.ProgramID = new SelectList(db.ProgramTables, "ProgramID", "Name", annualTable.ProgramID);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", annualTable.UserID);
+            return View(annualTable);
         }
 
-        // GET: UserTables/Edit/5
+        // GET: AnnualTables/Edit/5
         [UserAuthorizationFilter]
         public ActionResult Edit(int? id)
         {
@@ -75,34 +76,36 @@ namespace SchoolMgtSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserTable userTable = db.UserTables.Find(id);
-            if (userTable == null)
+            AnnualTable annualTable = db.AnnualTables.Find(id);
+            if (annualTable == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName", userTable.UserTypeID);
-            return View(userTable);
+            ViewBag.ProgramID = new SelectList(db.ProgramTables, "ProgramID", "Name", annualTable.ProgramID);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", annualTable.UserID);
+            return View(annualTable);
         }
 
-        // POST: UserTables/Edit/5
+        // POST: AnnualTables/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [UserAuthorizationFilter]
-        public ActionResult Edit(UserTable userTable)
+        public ActionResult Edit([Bind(Include = "AnnualID,UserID,ProgramID,Title,Fees,IsActive,Description")] AnnualTable annualTable)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(userTable).State = EntityState.Modified;
+                db.Entry(annualTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName", userTable.UserTypeID);
-            return View(userTable);
+            ViewBag.ProgramID = new SelectList(db.ProgramTables, "ProgramID", "Name", annualTable.ProgramID);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", annualTable.UserID);
+            return View(annualTable);
         }
 
-        // GET: UserTables/Delete/5
+        // GET: AnnualTables/Delete/5
         [UserAuthorizationFilter]
         public ActionResult Delete(int? id)
         {
@@ -110,22 +113,22 @@ namespace SchoolMgtSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserTable userTable = db.UserTables.Find(id);
-            if (userTable == null)
+            AnnualTable annualTable = db.AnnualTables.Find(id);
+            if (annualTable == null)
             {
                 return HttpNotFound();
             }
-            return View(userTable);
+            return View(annualTable);
         }
 
-        // POST: UserTables/Delete/5
+        // POST: AnnualTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [UserAuthorizationFilter]
         public ActionResult DeleteConfirmed(int id)
         {
-            UserTable userTable = db.UserTables.Find(id);
-            db.UserTables.Remove(userTable);
+            AnnualTable annualTable = db.AnnualTables.Find(id);
+            db.AnnualTables.Remove(annualTable);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

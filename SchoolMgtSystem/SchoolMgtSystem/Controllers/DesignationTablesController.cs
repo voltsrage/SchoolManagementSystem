@@ -11,121 +11,115 @@ using SchoolMgtSystem.CustomerFilters;
 
 namespace SchoolMgtSystem.Controllers
 {
-    public class UserTablesController : Controller
+    [UserAuthorizationFilter]
+    public class DesignationTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
 
-
-        // GET: UserTables
-        [UserAuthorizationFilter]
+        // GET: DesignationTables
+       
         public ActionResult Index()
         {
-            var userTables = db.UserTables.Include(u => u.UserTypeTable);
-            return View(userTables.ToList());
+            var designationTables = db.DesignationTables.Include(d => d.UserTable);
+            return View(designationTables.ToList());
         }
 
-        // GET: UserTables/Details/5
-        [UserAuthorizationFilter]
+        // GET: DesignationTables/Details/5
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserTable userTable = db.UserTables.Find(id);
-            if (userTable == null)
+            DesignationTable designationTable = db.DesignationTables.Find(id);
+            if (designationTable == null)
             {
                 return HttpNotFound();
             }
-            return View(userTable);
+            return View(designationTable);
         }
 
-        // GET: UserTables/Create
-        [UserAuthorizationFilter]
+        // GET: DesignationTables/Create
         public ActionResult Create()
         {
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName");
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName");
             return View();
         }
 
-        // POST: UserTables/Create
+        // POST: DesignationTables/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [UserAuthorizationFilter]
-        public ActionResult Create(UserTable userTable)
+        public ActionResult Create([Bind(Include = "DesignationID,UserID,Title,IsActive")] DesignationTable designationTable)
         {
             if (ModelState.IsValid)
             {
-                db.UserTables.Add(userTable);
+                db.DesignationTables.Add(designationTable);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName", userTable.UserTypeID);
-            return View(userTable);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", designationTable.UserID);
+            return View(designationTable);
         }
 
-        // GET: UserTables/Edit/5
-        [UserAuthorizationFilter]
+        // GET: DesignationTables/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserTable userTable = db.UserTables.Find(id);
-            if (userTable == null)
+            DesignationTable designationTable = db.DesignationTables.Find(id);
+            if (designationTable == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName", userTable.UserTypeID);
-            return View(userTable);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", designationTable.UserID);
+            return View(designationTable);
         }
 
-        // POST: UserTables/Edit/5
+        // POST: DesignationTables/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [UserAuthorizationFilter]
-        public ActionResult Edit(UserTable userTable)
+        public ActionResult Edit([Bind(Include = "DesignationID,UserID,Title,IsActive")] DesignationTable designationTable)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(userTable).State = EntityState.Modified;
+                db.Entry(designationTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName", userTable.UserTypeID);
-            return View(userTable);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", designationTable.UserID);
+            return View(designationTable);
         }
 
-        // GET: UserTables/Delete/5
-        [UserAuthorizationFilter]
+        // GET: DesignationTables/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserTable userTable = db.UserTables.Find(id);
-            if (userTable == null)
+            DesignationTable designationTable = db.DesignationTables.Find(id);
+            if (designationTable == null)
             {
                 return HttpNotFound();
             }
-            return View(userTable);
+            return View(designationTable);
         }
 
-        // POST: UserTables/Delete/5
+        // POST: DesignationTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [UserAuthorizationFilter]
         public ActionResult DeleteConfirmed(int id)
         {
-            UserTable userTable = db.UserTables.Find(id);
-            db.UserTables.Remove(userTable);
+            DesignationTable designationTable = db.DesignationTables.Find(id);
+            db.DesignationTables.Remove(designationTable);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

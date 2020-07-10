@@ -11,121 +11,113 @@ using SchoolMgtSystem.CustomerFilters;
 
 namespace SchoolMgtSystem.Controllers
 {
-    public class UserTablesController : Controller
+    [UserAuthorizationFilter]
+    public class ProgramTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
 
-
-        // GET: UserTables
-        [UserAuthorizationFilter]
+        // GET: ProgramTables
         public ActionResult Index()
         {
-            var userTables = db.UserTables.Include(u => u.UserTypeTable);
-            return View(userTables.ToList());
+            var programTables = db.ProgramTables.Include(p => p.UserTable);
+            return View(programTables.ToList());
         }
 
-        // GET: UserTables/Details/5
-        [UserAuthorizationFilter]
+        // GET: ProgramTables/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserTable userTable = db.UserTables.Find(id);
-            if (userTable == null)
+            ProgramTable programTable = db.ProgramTables.Find(id);
+            if (programTable == null)
             {
                 return HttpNotFound();
             }
-            return View(userTable);
+            return View(programTable);
         }
 
-        // GET: UserTables/Create
-        [UserAuthorizationFilter]
+        // GET: ProgramTables/Create
         public ActionResult Create()
         {
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName");
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName");
             return View();
         }
 
-        // POST: UserTables/Create
+        // POST: ProgramTables/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [UserAuthorizationFilter]
-        public ActionResult Create(UserTable userTable)
+        public ActionResult Create([Bind(Include = "ProgramID,UserID,Name,StartDate,EndDate")] ProgramTable programTable)
         {
             if (ModelState.IsValid)
             {
-                db.UserTables.Add(userTable);
+                db.ProgramTables.Add(programTable);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName", userTable.UserTypeID);
-            return View(userTable);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", programTable.UserID);
+            return View(programTable);
         }
 
-        // GET: UserTables/Edit/5
-        [UserAuthorizationFilter]
+        // GET: ProgramTables/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserTable userTable = db.UserTables.Find(id);
-            if (userTable == null)
+            ProgramTable programTable = db.ProgramTables.Find(id);
+            if (programTable == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName", userTable.UserTypeID);
-            return View(userTable);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", programTable.UserID);
+            return View(programTable);
         }
 
-        // POST: UserTables/Edit/5
+        // POST: ProgramTables/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [UserAuthorizationFilter]
-        public ActionResult Edit(UserTable userTable)
+        public ActionResult Edit([Bind(Include = "ProgramID,UserID,Name,StartDate,EndDate")] ProgramTable programTable)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(userTable).State = EntityState.Modified;
+                db.Entry(programTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName", userTable.UserTypeID);
-            return View(userTable);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", programTable.UserID);
+            return View(programTable);
         }
 
-        // GET: UserTables/Delete/5
-        [UserAuthorizationFilter]
+        // GET: ProgramTables/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserTable userTable = db.UserTables.Find(id);
-            if (userTable == null)
+            ProgramTable programTable = db.ProgramTables.Find(id);
+            if (programTable == null)
             {
                 return HttpNotFound();
             }
-            return View(userTable);
+            return View(programTable);
         }
 
-        // POST: UserTables/Delete/5
+        // POST: ProgramTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [UserAuthorizationFilter]
         public ActionResult DeleteConfirmed(int id)
         {
-            UserTable userTable = db.UserTables.Find(id);
-            db.UserTables.Remove(userTable);
+            ProgramTable programTable = db.ProgramTables.Find(id);
+            db.ProgramTables.Remove(programTable);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

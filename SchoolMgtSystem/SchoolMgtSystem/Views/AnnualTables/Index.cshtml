@@ -1,10 +1,10 @@
-﻿@model IEnumerable<SchoolDBAccess.UserTable>
+﻿@model IEnumerable<SchoolDBAccess.AnnualTable>
 
 @{
-    ViewBag.Title = "Users";
+    ViewBag.Title = "Fees";
 }
 
-<h2>All Users</h2>
+<h2>Fees</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
@@ -19,57 +19,56 @@
                 <thead>
                     <tr>
                         <th>
-                            Full Name
+                            @Html.DisplayNameFor(model => model.Title)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.UserName)
+                            @Html.DisplayNameFor(model => model.Fees)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ContactNo)
+                            @Html.DisplayNameFor(model => model.IsActive)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.EmailAddress)
+                            @Html.DisplayNameFor(model => model.Description)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Address)
+                            @Html.DisplayNameFor(model => model.ProgramTable.Name)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.UserTypeTable.TypeName)
+                            @Html.DisplayNameFor(model => model.UserTable.FullName)
                         </th>
                         <th></th>
                     </tr>
-                </thead>
+                    </thead>
                 <tbody>
-
                     @foreach (var item in Model)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.FullName)
+                                @Html.DisplayFor(modelItem => item.Title)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.UserName)
+                                @Html.DisplayFor(modelItem => item.Fees)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.ContactNo)
+                                @Html.DisplayFor(modelItem => item.IsActive)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.EmailAddress)
+                                @Html.DisplayFor(modelItem => item.Description)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Address)
+                                @Html.DisplayFor(modelItem => item.ProgramTable.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.UserTypeTable.TypeName)
+                                @Html.DisplayFor(modelItem => item.UserTable.FullName)
                             </td>
                             <td class="btn-group">
-                                @Html.ActionLink("Edit", "Edit", new { id = item.UserID }, new { @class = "btn btn-primary" }) 
-                                @Html.ActionLink("Details", "Details", new { id = item.UserID }, new { @class = "btn btn-info" }) 
+                                @Html.ActionLink("Edit", "Edit", new { id = item.UserID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Details", "Details", new { id = item.UserID }, new { @class = "btn btn-info" })
                                 @Html.ActionLink("Delete", "Delete", new { id = item.UserID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }
-                </tbody>
+                    </tbody>
             </table>
         </div>
     </div>

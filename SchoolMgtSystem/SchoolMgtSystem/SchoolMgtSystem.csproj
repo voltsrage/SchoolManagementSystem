@@ -139,9 +139,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AnnualTablesController.cs" />
+    <Compile Include="Controllers\DesignationTablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProgramTablesController.cs" />
+    <Compile Include="Controllers\SessionTablesController.cs" />
+    <Compile Include="Controllers\SubjectTablesController.cs" />
     <Compile Include="Controllers\UserTablesController.cs" />
     <Compile Include="Controllers\UserTypeTablesController.cs" />
+    <Compile Include="CustomerFilters\UserAuthorizationFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2035,6 +2041,31 @@
     <Content Include="Views\UserTables\Edit.cshtml" />
     <Content Include="Views\UserTables\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\SessionTables\Create.cshtml" />
+    <Content Include="Views\SessionTables\Delete.cshtml" />
+    <Content Include="Views\SessionTables\Details.cshtml" />
+    <Content Include="Views\SessionTables\Edit.cshtml" />
+    <Content Include="Views\SessionTables\Index.cshtml" />
+    <Content Include="Views\SubjectTables\Create.cshtml" />
+    <Content Include="Views\SubjectTables\Delete.cshtml" />
+    <Content Include="Views\SubjectTables\Details.cshtml" />
+    <Content Include="Views\SubjectTables\Edit.cshtml" />
+    <Content Include="Views\SubjectTables\Index.cshtml" />
+    <Content Include="Views\ProgramTables\Create.cshtml" />
+    <Content Include="Views\ProgramTables\Delete.cshtml" />
+    <Content Include="Views\ProgramTables\Details.cshtml" />
+    <Content Include="Views\ProgramTables\Edit.cshtml" />
+    <Content Include="Views\ProgramTables\Index.cshtml" />
+    <Content Include="Views\DesignationTables\Create.cshtml" />
+    <Content Include="Views\DesignationTables\Delete.cshtml" />
+    <Content Include="Views\DesignationTables\Details.cshtml" />
+    <Content Include="Views\DesignationTables\Edit.cshtml" />
+    <Content Include="Views\DesignationTables\Index.cshtml" />
+    <Content Include="Views\AnnualTables\Create.cshtml" />
+    <Content Include="Views\AnnualTables\Delete.cshtml" />
+    <Content Include="Views\AnnualTables\Details.cshtml" />
+    <Content Include="Views\AnnualTables\Edit.cshtml" />
+    <Content Include="Views\AnnualTables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SchoolDBAccess;
+using SchoolMgtSystem.CustomerFilters;
 
 namespace SchoolMgtSystem.Controllers
 {
@@ -15,22 +16,16 @@ namespace SchoolMgtSystem.Controllers
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
 
         // GET: UserTypeTables
+        [UserAuthorizationFilter]
         public ActionResult Index()
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
-            {
-                return RedirectToAction("Login", "Home");
-            }
             return View(db.UserTypeTables.ToList());
         }
 
         // GET: UserTypeTables/Details/5
+        [UserAuthorizationFilter]
         public ActionResult Details(int? id)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
-            {
-                return RedirectToAction("Login", "Home");
-            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -44,12 +39,9 @@ namespace SchoolMgtSystem.Controllers
         }
 
         // GET: UserTypeTables/Create
+        [UserAuthorizationFilter]
         public ActionResult Create()
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
-            {
-                return RedirectToAction("Login", "Home");
-            }
             return View();
         }
 
@@ -58,12 +50,9 @@ namespace SchoolMgtSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [UserAuthorizationFilter]
         public ActionResult Create(UserTypeTable userTypeTable)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
-            {
-                return RedirectToAction("Login", "Home");
-            }
             if (ModelState.IsValid)
             {
                 db.UserTypeTables.Add(userTypeTable);
@@ -75,12 +64,9 @@ namespace SchoolMgtSystem.Controllers
         }
 
         // GET: UserTypeTables/Edit/5
+        [UserAuthorizationFilter]
         public ActionResult Edit(int? id)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
-            {
-                return RedirectToAction("Login", "Home");
-            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -98,12 +84,9 @@ namespace SchoolMgtSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [UserAuthorizationFilter]
         public ActionResult Edit( UserTypeTable userTypeTable)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
-            {
-                return RedirectToAction("Login", "Home");
-            }
             if (ModelState.IsValid)
             {
                 db.Entry(userTypeTable).State = EntityState.Modified;
@@ -114,12 +97,9 @@ namespace SchoolMgtSystem.Controllers
         }
 
         // GET: UserTypeTables/Delete/5
+        [UserAuthorizationFilter]
         public ActionResult Delete(int? id)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
-            {
-                return RedirectToAction("Login", "Home");
-            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -135,12 +115,9 @@ namespace SchoolMgtSystem.Controllers
         // POST: UserTypeTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [UserAuthorizationFilter]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
-            {
-                return RedirectToAction("Login", "Home");
-            }
             UserTypeTable userTypeTable = db.UserTypeTables.Find(id);
             db.UserTypeTables.Remove(userTypeTable);
             db.SaveChanges();

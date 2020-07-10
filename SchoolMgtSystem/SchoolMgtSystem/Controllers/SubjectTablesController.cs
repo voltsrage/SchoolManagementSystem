@@ -11,121 +11,113 @@ using SchoolMgtSystem.CustomerFilters;
 
 namespace SchoolMgtSystem.Controllers
 {
-    public class UserTablesController : Controller
+    [UserAuthorizationFilter]
+    public class SubjectTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
 
-
-        // GET: UserTables
-        [UserAuthorizationFilter]
+        // GET: SubjectTables
         public ActionResult Index()
         {
-            var userTables = db.UserTables.Include(u => u.UserTypeTable);
-            return View(userTables.ToList());
+            var subjectTables = db.SubjectTables.Include(s => s.UserTable);
+            return View(subjectTables.ToList());
         }
 
-        // GET: UserTables/Details/5
-        [UserAuthorizationFilter]
+        // GET: SubjectTables/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserTable userTable = db.UserTables.Find(id);
-            if (userTable == null)
+            SubjectTable subjectTable = db.SubjectTables.Find(id);
+            if (subjectTable == null)
             {
                 return HttpNotFound();
             }
-            return View(userTable);
+            return View(subjectTable);
         }
 
-        // GET: UserTables/Create
-        [UserAuthorizationFilter]
+        // GET: SubjectTables/Create
         public ActionResult Create()
         {
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName");
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName");
             return View();
         }
 
-        // POST: UserTables/Create
+        // POST: SubjectTables/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [UserAuthorizationFilter]
-        public ActionResult Create(UserTable userTable)
+        public ActionResult Create([Bind(Include = "SubjectID,UserID,Name,RegDate,TotalMarks,Description")] SubjectTable subjectTable)
         {
             if (ModelState.IsValid)
             {
-                db.UserTables.Add(userTable);
+                db.SubjectTables.Add(subjectTable);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName", userTable.UserTypeID);
-            return View(userTable);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", subjectTable.UserID);
+            return View(subjectTable);
         }
 
-        // GET: UserTables/Edit/5
-        [UserAuthorizationFilter]
+        // GET: SubjectTables/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserTable userTable = db.UserTables.Find(id);
-            if (userTable == null)
+            SubjectTable subjectTable = db.SubjectTables.Find(id);
+            if (subjectTable == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName", userTable.UserTypeID);
-            return View(userTable);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", subjectTable.UserID);
+            return View(subjectTable);
         }
 
-        // POST: UserTables/Edit/5
+        // POST: SubjectTables/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [UserAuthorizationFilter]
-        public ActionResult Edit(UserTable userTable)
+        public ActionResult Edit([Bind(Include = "SubjectID,UserID,Name,RegDate,TotalMarks,Description")] SubjectTable subjectTable)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(userTable).State = EntityState.Modified;
+                db.Entry(subjectTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserTypeID = new SelectList(db.UserTypeTables, "UserTypeID", "TypeName", userTable.UserTypeID);
-            return View(userTable);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", subjectTable.UserID);
+            return View(subjectTable);
         }
 
-        // GET: UserTables/Delete/5
-        [UserAuthorizationFilter]
+        // GET: SubjectTables/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserTable userTable = db.UserTables.Find(id);
-            if (userTable == null)
+            SubjectTable subjectTable = db.SubjectTables.Find(id);
+            if (subjectTable == null)
             {
                 return HttpNotFound();
             }
-            return View(userTable);
+            return View(subjectTable);
         }
 
-        // POST: UserTables/Delete/5
+        // POST: SubjectTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [UserAuthorizationFilter]
         public ActionResult DeleteConfirmed(int id)
         {
-            UserTable userTable = db.UserTables.Find(id);
-            db.UserTables.Remove(userTable);
+            SubjectTable subjectTable = db.SubjectTables.Find(id);
+            db.SubjectTables.Remove(subjectTable);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

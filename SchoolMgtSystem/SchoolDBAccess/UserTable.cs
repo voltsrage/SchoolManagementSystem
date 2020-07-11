@@ -22,38 +22,38 @@ namespace SchoolDBAccess
             this.DesignationTables = new HashSet<DesignationTable>();
             this.EmployeeSalaryTables = new HashSet<EmployeeSalaryTable>();
             this.EventsTables = new HashSet<EventsTable>();
+            this.ExamSettingTables = new HashSet<ExamSettingTable>();
             this.ExamTables = new HashSet<ExamTable>();
             this.ExpensesTables = new HashSet<ExpensesTable>();
             this.MarksTables = new HashSet<MarksTable>();
             this.ProgramSessions = new HashSet<ProgramSession>();
             this.ProgramTables = new HashSet<ProgramTable>();
+            this.RoomTables = new HashSet<RoomTable>();
             this.SchoolLeavingTables = new HashSet<SchoolLeavingTable>();
+            this.SessionProgramSubjectSettingTables = new HashSet<SessionProgramSubjectSettingTable>();
             this.SessionTables = new HashSet<SessionTable>();
             this.StaffTables = new HashSet<StaffTable>();
             this.StudentTables = new HashSet<StudentTable>();
             this.SubjectTables = new HashSet<SubjectTable>();
             this.SubmissionTables = new HashSet<SubmissionTable>();
             this.TimeTableTables = new HashSet<TimeTableTable>();
-            this.ExamSettingTables = new HashSet<ExamSettingTable>();
-            this.RoomTables = new HashSet<RoomTable>();
-            this.SessionProgramSubjectSettingTables = new HashSet<SessionProgramSubjectSettingTable>();
         }
 
+        [Key]
         [Display(Name = "User ID")]
         public int UserID { get; set; }
-        [Display(Name = "User Type")]
+        [Display(Name = "User Type ID")]
         public Nullable<int> UserTypeID { get; set; }
-        [Display(Name ="User")]
+        [Display(Name = "User")]
         public string FullName { get; set; }
-        [Display(Name = "Username")]
         public string UserName { get; set; }
         public string Password { get; set; }
-        [Display(Name = "Contact No.")]
+        [Display(Name = "Contact No")]
         public string ContactNo { get; set; }
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
         public string Address { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnnualTable> AnnualTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -62,6 +62,8 @@ namespace SchoolDBAccess
         public virtual ICollection<EmployeeSalaryTable> EmployeeSalaryTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EventsTable> EventsTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExamSettingTable> ExamSettingTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamTable> ExamTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -73,7 +75,11 @@ namespace SchoolDBAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProgramTable> ProgramTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RoomTable> RoomTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SchoolLeavingTable> SchoolLeavingTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SessionProgramSubjectSettingTable> SessionProgramSubjectSettingTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SessionTable> SessionTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -87,11 +93,5 @@ namespace SchoolDBAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TimeTableTable> TimeTableTables { get; set; }
         public virtual UserTypeTable UserTypeTable { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExamSettingTable> ExamSettingTables { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RoomTable> RoomTables { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SessionProgramSubjectSettingTable> SessionProgramSubjectSettingTables { get; set; }
     }
 }

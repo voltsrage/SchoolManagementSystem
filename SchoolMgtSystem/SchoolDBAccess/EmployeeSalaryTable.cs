@@ -11,8 +11,7 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class EmployeeSalaryTable
     {
         public int EmployeeSalaryID { get; set; }
@@ -21,7 +20,6 @@ namespace SchoolDBAccess
         public Nullable<double> Amount { get; set; }
         public string SalaryMonth { get; set; }
         public string SalaryYear { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> SalaryDate { get; set; }
         public string Comments { get; set; }
     

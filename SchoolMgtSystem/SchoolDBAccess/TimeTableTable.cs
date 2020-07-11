@@ -11,16 +11,13 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class TimeTableTable
     {
         public int TimeTableID { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> StaffID { get; set; }
-        [DataType(DataType.Time)]
         public Nullable<System.DateTime> StartTime { get; set; }
-        [DataType(DataType.Time)]
         public Nullable<System.DateTime> EndTime { get; set; }
         public string Day { get; set; }
         public Nullable<int> ClassSubjectID { get; set; }

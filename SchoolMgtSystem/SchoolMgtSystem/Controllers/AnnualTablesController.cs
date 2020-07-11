@@ -19,7 +19,7 @@ namespace SchoolMgtSystem.Controllers
         [UserAuthorizationFilter]
         public ActionResult Index()
         {
-            var annualTables = db.AnnualTables.Include(a => a.ProgramTable).Include(a => a.UserTable);
+            var annualTables = db.AnnualTables.Include(a => a.ProgramTable).Include(a => a.UserTable).Where(f=>f.IsActive == true);
             return View(annualTables.ToList());
         }
 
@@ -43,7 +43,7 @@ namespace SchoolMgtSystem.Controllers
         [UserAuthorizationFilter]
         public ActionResult Create()
         {
-            ViewBag.ProgramID = new SelectList(db.ProgramTables, "ProgramID", "Name");
+            ViewBag.ProgramID = new SelectList(db.ProgramTables.Where(p=>p.IsActive == true), "ProgramID", "Name");
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName");
             return View();
         }
@@ -54,8 +54,9 @@ namespace SchoolMgtSystem.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [UserAuthorizationFilter]
-        public ActionResult Create([Bind(Include = "AnnualID,UserID,ProgramID,Title,Fees,IsActive,Description")] AnnualTable annualTable)
+        public ActionResult Create(AnnualTable annualTable)
         {
+            annualTable.UserID = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             if (ModelState.IsValid)
             {
                 db.AnnualTables.Add(annualTable);
@@ -63,7 +64,7 @@ namespace SchoolMgtSystem.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProgramID = new SelectList(db.ProgramTables, "ProgramID", "Name", annualTable.ProgramID);
+            ViewBag.ProgramID = new SelectList(db.ProgramTables.Where(p => p.IsActive == true), "ProgramID", "Name", annualTable.ProgramID);
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", annualTable.UserID);
             return View(annualTable);
         }
@@ -81,7 +82,7 @@ namespace SchoolMgtSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ProgramID = new SelectList(db.ProgramTables, "ProgramID", "Name", annualTable.ProgramID);
+            ViewBag.ProgramID = new SelectList(db.ProgramTables.Where(p => p.IsActive == true), "ProgramID", "Name", annualTable.ProgramID);
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", annualTable.UserID);
             return View(annualTable);
         }
@@ -92,15 +93,16 @@ namespace SchoolMgtSystem.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [UserAuthorizationFilter]
-        public ActionResult Edit([Bind(Include = "AnnualID,UserID,ProgramID,Title,Fees,IsActive,Description")] AnnualTable annualTable)
+        public ActionResult Edit(AnnualTable annualTable)
         {
+            annualTable.UserID = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             if (ModelState.IsValid)
             {
                 db.Entry(annualTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ProgramID = new SelectList(db.ProgramTables, "ProgramID", "Name", annualTable.ProgramID);
+            ViewBag.ProgramID = new SelectList(db.ProgramTables.Where(p => p.IsActive == true), "ProgramID", "Name", annualTable.ProgramID);
             ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", annualTable.UserID);
             return View(annualTable);
         }

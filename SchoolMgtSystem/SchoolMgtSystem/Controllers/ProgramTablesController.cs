@@ -50,8 +50,9 @@ namespace SchoolMgtSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProgramID,UserID,Name,StartDate,EndDate")] ProgramTable programTable)
+        public ActionResult Create(ProgramTable programTable)
         {
+            programTable.UserID = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             if (ModelState.IsValid)
             {
                 db.ProgramTables.Add(programTable);
@@ -81,11 +82,12 @@ namespace SchoolMgtSystem.Controllers
 
         // POST: ProgramTables/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProgramID,UserID,Name,StartDate,EndDate")] ProgramTable programTable)
+        public ActionResult Edit(ProgramTable programTable)
         {
+            programTable.UserID = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             if (ModelState.IsValid)
             {
                 db.Entry(programTable).State = EntityState.Modified;

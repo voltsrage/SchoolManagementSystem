@@ -52,8 +52,9 @@ namespace SchoolMgtSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DesignationID,UserID,Title,IsActive")] DesignationTable designationTable)
+        public ActionResult Create(DesignationTable designationTable)
         {
+            designationTable.UserID = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             if (ModelState.IsValid)
             {
                 db.DesignationTables.Add(designationTable);
@@ -86,8 +87,9 @@ namespace SchoolMgtSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DesignationID,UserID,Title,IsActive")] DesignationTable designationTable)
+        public ActionResult Edit(DesignationTable designationTable)
         {
+            designationTable.UserID = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             if (ModelState.IsValid)
             {
                 db.Entry(designationTable).State = EntityState.Modified;

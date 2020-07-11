@@ -15,27 +15,22 @@ namespace SchoolDBAccess
 
     public partial class AnnualTable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AnnualTable()
-        {
-            this.SessionProgramSubjectSettingTables = new HashSet<SessionProgramSubjectSettingTable>();
-        }
-    
+        [Key]
+        [Display(Name = "Annual ID")]
         public int AnnualID { get; set; }
         [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
         [Display(Name = "Program ID")]
         public Nullable<int> ProgramID { get; set; }
-        [Display(Name = "Title")]
+
         public string Title { get; set; }
+        [DataType(DataType.Currency)]
         public Nullable<double> Fees { get; set; }
-        [Display(Name = "Is Active")]
+        [Display(Name = "Status")]
         public Nullable<bool> IsActive { get; set; }
         public string Description { get; set; }
-    
+
         public virtual ProgramTable ProgramTable { get; set; }
         public virtual UserTable UserTable { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SessionProgramSubjectSettingTable> SessionProgramSubjectSettingTables { get; set; }
     }
 }

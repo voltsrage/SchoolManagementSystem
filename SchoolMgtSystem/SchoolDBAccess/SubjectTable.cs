@@ -22,13 +22,15 @@ namespace SchoolDBAccess
             this.SessionProgramSubjectSettingTables = new HashSet<SessionProgramSubjectSettingTable>();
         }
 
+        [Key]
         [Display(Name = "Subject ID")]
         public int SubjectID { get; set; }
-        [Display(Name = "User ID")]
+        [Display(Name = "SUser ID")]
         public Nullable<int> UserID { get; set; }
         public string Name { get; set; }
-        [DataType(DataType.Date)]
         [Display(Name = "Registration Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> RegDate { get; set; }
         [Display(Name = "Total Marks")]
         public Nullable<int> TotalMarks { get; set; }
@@ -36,8 +38,8 @@ namespace SchoolDBAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClassSubjectTable> ClassSubjectTables { get; set; }
-        public virtual UserTable UserTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SessionProgramSubjectSettingTable> SessionProgramSubjectSettingTables { get; set; }
+        public virtual UserTable UserTable { get; set; }
     }
 }

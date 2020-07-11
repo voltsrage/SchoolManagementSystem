@@ -11,17 +11,13 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class StaffAttendanceTable
     {
         public int StaffAttendanceID { get; set; }
         public Nullable<int> StaffID { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> AttendDate { get; set; }
-        [DataType(DataType.Time)]
         public Nullable<System.TimeSpan> Arrival { get; set; }
-        [DataType(DataType.Time)]
         public Nullable<System.TimeSpan> LeavingTime { get; set; }
     
         public virtual StaffTable StaffTable { get; set; }

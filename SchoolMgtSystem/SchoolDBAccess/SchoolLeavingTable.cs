@@ -11,19 +11,16 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class SchoolLeavingTable
     {
         public int SchoolLeavingID { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> StudentID { get; set; }
         public Nullable<int> ClassID { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> LeavingDate { get; set; }
         public string LeavingReason { get; set; }
         public string LeavingComments { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> CreateDate { get; set; }
     
         public virtual ClassTable ClassTable { get; set; }

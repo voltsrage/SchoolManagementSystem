@@ -1,26 +1,19 @@
 ﻿@model SchoolDBAccess.DesignationTable
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Designations";
 }
 
-<h2>Create</h2>
+<h2>Add</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>DesignationTable</h4>
+        <h4>New Designation</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserID, "UserID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                @Html.DropDownList("UserID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })       
 
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })

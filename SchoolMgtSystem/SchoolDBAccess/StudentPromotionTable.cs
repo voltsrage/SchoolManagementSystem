@@ -11,8 +11,7 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class StudentPromotionTable
     {
         public int StudentPromoteID { get; set; }
@@ -20,7 +19,6 @@ namespace SchoolDBAccess
         public Nullable<int> ClassID { get; set; }
         public Nullable<int> ProgramSessionID { get; set; }
         public Nullable<int> SectionID { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> PromoteDate { get; set; }
         public Nullable<double> AnnualFree { get; set; }
         public Nullable<bool> IsPromote { get; set; }

@@ -21,15 +21,15 @@ namespace SchoolDBAccess
             this.StaffTables = new HashSet<StaffTable>();
         }
 
+        [Key]
         [Display(Name = "Designation ID")]
         public int DesignationID { get; set; }
         [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
-        [Display(Name = "Title")]
         public string Title { get; set; }
-        [Display(Name = "Is Active")]
+        [Display(Name = "Status")]
         public Nullable<bool> IsActive { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StaffTable> StaffTables { get; set; }
         public virtual UserTable UserTable { get; set; }

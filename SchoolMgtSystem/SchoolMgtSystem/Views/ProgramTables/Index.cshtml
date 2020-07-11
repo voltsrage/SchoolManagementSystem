@@ -11,7 +11,7 @@
 </p>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Users</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Programs</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -25,7 +25,7 @@
                             @Html.DisplayNameFor(model => model.StartDate)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.EndDate)
+                            @Html.DisplayNameFor(model => model.IsActive)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.UserTable.FullName)
@@ -44,15 +44,15 @@
                                 @Html.DisplayFor(modelItem => item.StartDate)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.EndDate)
+                                @Html.DisplayFor(modelItem => item.IsActive)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.UserTable.FullName)
                             </td>
                             <td class="btn-group">
-                                @Html.ActionLink("Edit", "Edit", new { id = item.UserID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Details", "Details", new { id = item.UserID }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.UserID }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ProgramID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Details", "Details", new { id = item.ProgramID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ProgramID }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }

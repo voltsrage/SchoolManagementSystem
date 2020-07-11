@@ -22,31 +22,46 @@ namespace SchoolDBAccess
             this.StaffAttendanceTables = new HashSet<StaffAttendanceTable>();
             this.TimeTableTables = new HashSet<TimeTableTable>();
         }
-    
+
+        [Key]
+        [Display(Name = "Staff ID")]
         public int StaffID { get; set; }
+        [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
         public string Name { get; set; }
+        [Display(Name = "Designation ID")]
         public Nullable<int> DesignationID { get; set; }
+        [Display(Name = "Contact No.")]
         public string ContactNo { get; set; }
-        [DataType(DataType.Currency)]
+        [Display(Name = "Basic Salary")]
         public Nullable<double> BasicSalary { get; set; }
+        [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
         public string Address { get; set; }
         public string Qualification { get; set; }
         public string Photo { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Status")]
         public Nullable<bool> IsActive { get; set; }
         public string Gender { get; set; }
+        [Display(Name = "Home Phone No.")]
         public string HomePhoneNo { get; set; }
+        [Display(Name = "Do you have a disability?")]
         public Nullable<bool> Doyouhaveadisability { get; set; }
+        [Display(Name = "If yes? Disability details")]
         public string DisabilityDetails { get; set; }
+        [Display(Name = "Are you taking any medication?")]
         public Nullable<bool> Areyoutakinganymedication { get; set; }
+        [Display(Name = "If yes? Medication details")]
         public string MedicationDetails { get; set; }
+        [Display(Name = "Do you have a criminal record?")]
         public Nullable<bool> Doyouhaveacriminalrecord { get; set; }
+        [Display(Name = "If yes? Criminal record details")]
         public string CriminalRecordDetails { get; set; }
         [DataType(DataType.Date)]
+        [Display(Name = "Registration Date")]
         public Nullable<System.DateTime> RegistrationDate { get; set; }
-    
+
         public virtual DesignationTable DesignationTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeSalaryTable> EmployeeSalaryTables { get; set; }

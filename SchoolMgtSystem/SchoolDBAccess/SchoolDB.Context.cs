@@ -31,14 +31,17 @@ namespace SchoolDBAccess
         public virtual DbSet<DesignationTable> DesignationTables { get; set; }
         public virtual DbSet<EmployeeSalaryTable> EmployeeSalaryTables { get; set; }
         public virtual DbSet<EventsTable> EventsTables { get; set; }
+        public virtual DbSet<ExamSettingTable> ExamSettingTables { get; set; }
         public virtual DbSet<ExamTable> ExamTables { get; set; }
         public virtual DbSet<ExpensesTable> ExpensesTables { get; set; }
         public virtual DbSet<ExpensesTypeTable> ExpensesTypeTables { get; set; }
         public virtual DbSet<MarksTable> MarksTables { get; set; }
         public virtual DbSet<ProgramSession> ProgramSessions { get; set; }
         public virtual DbSet<ProgramTable> ProgramTables { get; set; }
+        public virtual DbSet<RoomTable> RoomTables { get; set; }
         public virtual DbSet<SchoolLeavingTable> SchoolLeavingTables { get; set; }
         public virtual DbSet<SectionTable> SectionTables { get; set; }
+        public virtual DbSet<SessionProgramSubjectSettingTable> SessionProgramSubjectSettingTables { get; set; }
         public virtual DbSet<SessionTable> SessionTables { get; set; }
         public virtual DbSet<StaffAttendanceTable> StaffAttendanceTables { get; set; }
         public virtual DbSet<StaffTable> StaffTables { get; set; }
@@ -47,12 +50,9 @@ namespace SchoolDBAccess
         public virtual DbSet<StudentTable> StudentTables { get; set; }
         public virtual DbSet<SubjectTable> SubjectTables { get; set; }
         public virtual DbSet<SubmissionTable> SubmissionTables { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TimeTableTable> TimeTableTables { get; set; }
         public virtual DbSet<UserTable> UserTables { get; set; }
         public virtual DbSet<UserTypeTable> UserTypeTables { get; set; }
-        public virtual DbSet<ExamSettingTable> ExamSettingTables { get; set; }
-        public virtual DbSet<RoomTable> RoomTables { get; set; }
-        public virtual DbSet<SessionProgramSubjectSettingTable> SessionProgramSubjectSettingTables { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

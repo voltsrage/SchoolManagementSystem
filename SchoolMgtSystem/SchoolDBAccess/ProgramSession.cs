@@ -11,15 +11,14 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class ProgramSession
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ProgramSession()
         {
-            this.StudentPromotionTables = new HashSet<StudentPromotionTable>();
             this.ExamSettingTables = new HashSet<ExamSettingTable>();
+            this.StudentPromotionTables = new HashSet<StudentPromotionTable>();
         }
     
         public int ProgramSessionID { get; set; }
@@ -27,16 +26,15 @@ namespace SchoolDBAccess
         public Nullable<int> SessionID { get; set; }
         public Nullable<int> ProgramID { get; set; }
         public string Title { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> RegDate { get; set; }
         public string Description { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExamSettingTable> ExamSettingTables { get; set; }
         public virtual ProgramTable ProgramTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentPromotionTable> StudentPromotionTables { get; set; }
         public virtual SessionTable SessionTable { get; set; }
         public virtual UserTable UserTable { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExamSettingTable> ExamSettingTables { get; set; }
     }
 }

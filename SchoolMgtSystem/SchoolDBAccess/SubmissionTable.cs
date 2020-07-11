@@ -11,18 +11,15 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class SubmissionTable
     {
         public int SubmissionFeeID { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> ClassID { get; set; }
         public Nullable<int> StudentID { get; set; }
-        [DataType(DataType.Currency)]
         public Nullable<double> Amount { get; set; }
         public Nullable<int> ProgramID { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> SubmissionDate { get; set; }
         public string FeesMonth { get; set; }
         public string Description { get; set; }

@@ -50,8 +50,9 @@ namespace SchoolMgtSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SubjectID,UserID,Name,RegDate,TotalMarks,Description")] SubjectTable subjectTable)
+        public ActionResult Create(SubjectTable subjectTable)
         {
+            subjectTable.UserID = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             if (ModelState.IsValid)
             {
                 db.SubjectTables.Add(subjectTable);
@@ -84,8 +85,9 @@ namespace SchoolMgtSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SubjectID,UserID,Name,RegDate,TotalMarks,Description")] SubjectTable subjectTable)
+        public ActionResult Edit(SubjectTable subjectTable)
         {
+            subjectTable.UserID = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             if (ModelState.IsValid)
             {
                 db.Entry(subjectTable).State = EntityState.Modified;

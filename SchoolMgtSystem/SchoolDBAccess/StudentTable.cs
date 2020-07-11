@@ -11,8 +11,7 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class StudentTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -33,12 +32,10 @@ namespace SchoolDBAccess
         public string Name { get; set; }
         public string FatherName { get; set; }
         public string MotherName { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Gender { get; set; }
         public string StudentIdCard { get; set; }
         public string Photo { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> AdmissionDate { get; set; }
         public string PreviousSchool { get; set; }
         public Nullable<double> PreviousClassAverage { get; set; }

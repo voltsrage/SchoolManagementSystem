@@ -99,6 +99,37 @@
                     </div>
                 </div>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSessions" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Sessions</span>
+                </a>
+                <div id="collapseSessions" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Configurations</h6>
+                        @Html.ActionLink("Sessions", "Index", "SessionTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Program Setting", "Index", "ProgramSessions", null, new { @class = "collapse-item" })
+
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClasses" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Classes</span>
+                </a>
+                <div id="collapseClasses" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Configurations</h6>
+                        @Html.ActionLink("Classes", "Index", "ClassTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Class Subject Settings", "Index", "ClassSubjectTables", null, new { @class = "collapse-item" })
+
+                    </div>
+                </div>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider" />
             <!-- Heading -->

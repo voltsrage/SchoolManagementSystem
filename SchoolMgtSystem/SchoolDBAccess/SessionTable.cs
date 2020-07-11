@@ -20,7 +20,6 @@ namespace SchoolDBAccess
         {
             this.ExamSettingTables = new HashSet<ExamSettingTable>();
             this.ProgramSessions = new HashSet<ProgramSession>();
-            this.SessionProgramSubjectSettingTables = new HashSet<SessionProgramSubjectSettingTable>();
             this.StudentAttendanceTables = new HashSet<StudentAttendanceTable>();
             this.StudentTables = new HashSet<StudentTable>();
         }
@@ -30,6 +29,7 @@ namespace SchoolDBAccess
         public int SessionID { get; set; }
         [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
+        [Display(Name = "Session")]
         public string Name { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -44,8 +44,6 @@ namespace SchoolDBAccess
         public virtual ICollection<ExamSettingTable> ExamSettingTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProgramSession> ProgramSessions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SessionProgramSubjectSettingTable> SessionProgramSubjectSettingTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentAttendanceTable> StudentAttendanceTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

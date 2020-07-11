@@ -11,7 +11,8 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ClassTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,23 +20,23 @@ namespace SchoolDBAccess
         {
             this.ClassSubjectTables = new HashSet<ClassSubjectTable>();
             this.SchoolLeavingTables = new HashSet<SchoolLeavingTable>();
-            this.SessionProgramSubjectSettingTables = new HashSet<SessionProgramSubjectSettingTable>();
             this.StudentAttendanceTables = new HashSet<StudentAttendanceTable>();
             this.StudentPromotionTables = new HashSet<StudentPromotionTable>();
             this.StudentTables = new HashSet<StudentTable>();
             this.SubmissionTables = new HashSet<SubmissionTable>();
         }
-    
+
+        [Key]
         public int ClassID { get; set; }
+        [Display(Name = "Class")]
         public string Name { get; set; }
+        [Display(Name = "Status")]
         public Nullable<bool> IsActive { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClassSubjectTable> ClassSubjectTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SchoolLeavingTable> SchoolLeavingTables { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SessionProgramSubjectSettingTable> SessionProgramSubjectSettingTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentAttendanceTable> StudentAttendanceTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

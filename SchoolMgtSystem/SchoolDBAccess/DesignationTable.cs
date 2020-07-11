@@ -21,11 +21,13 @@ namespace SchoolDBAccess
             this.StaffTables = new HashSet<StaffTable>();
         }
 
+
         [Key]
         [Display(Name = "Designation ID")]
         public int DesignationID { get; set; }
         [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
+        [Display(Name = "Designation")]
         public string Title { get; set; }
         [Display(Name = "Status")]
         public Nullable<bool> IsActive { get; set; }

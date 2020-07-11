@@ -41,7 +41,6 @@ namespace SchoolDBAccess
         public virtual DbSet<RoomTable> RoomTables { get; set; }
         public virtual DbSet<SchoolLeavingTable> SchoolLeavingTables { get; set; }
         public virtual DbSet<SectionTable> SectionTables { get; set; }
-        public virtual DbSet<SessionProgramSubjectSettingTable> SessionProgramSubjectSettingTables { get; set; }
         public virtual DbSet<SessionTable> SessionTables { get; set; }
         public virtual DbSet<StaffAttendanceTable> StaffAttendanceTables { get; set; }
         public virtual DbSet<StaffTable> StaffTables { get; set; }

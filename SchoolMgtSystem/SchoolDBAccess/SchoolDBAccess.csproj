@@ -114,9 +114,6 @@
     <Compile Include="SectionTable.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="SessionProgramSubjectSettingTable.cs">
-      <DependentUpon>SchoolDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="SessionTable.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>

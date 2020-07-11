@@ -140,8 +140,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AnnualTablesController.cs" />
+    <Compile Include="Controllers\ClassSubjectTablesController.cs" />
+    <Compile Include="Controllers\ClassTablesController.cs" />
     <Compile Include="Controllers\DesignationTablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProgramSessionsController.cs" />
     <Compile Include="Controllers\ProgramTablesController.cs" />
     <Compile Include="Controllers\SessionTablesController.cs" />
     <Compile Include="Controllers\SubjectTablesController.cs" />
@@ -2066,6 +2069,21 @@
     <Content Include="Views\AnnualTables\Details.cshtml" />
     <Content Include="Views\AnnualTables\Edit.cshtml" />
     <Content Include="Views\AnnualTables\Index.cshtml" />
+    <Content Include="Views\ProgramSessions\Index.cshtml" />
+    <Content Include="Views\ProgramSessions\Create.cshtml" />
+    <Content Include="Views\ProgramSessions\Edit.cshtml" />
+    <Content Include="Views\ProgramSessions\Delete.cshtml" />
+    <Content Include="Views\ProgramSessions\Details.cshtml" />
+    <Content Include="Views\ClassTables\Create.cshtml" />
+    <Content Include="Views\ClassTables\Delete.cshtml" />
+    <Content Include="Views\ClassTables\Details.cshtml" />
+    <Content Include="Views\ClassTables\Edit.cshtml" />
+    <Content Include="Views\ClassTables\Index.cshtml" />
+    <Content Include="Views\ClassSubjectTables\Create.cshtml" />
+    <Content Include="Views\ClassSubjectTables\Delete.cshtml" />
+    <Content Include="Views\ClassSubjectTables\Details.cshtml" />
+    <Content Include="Views\ClassSubjectTables\Edit.cshtml" />
+    <Content Include="Views\ClassSubjectTables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

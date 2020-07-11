@@ -30,7 +30,6 @@ namespace SchoolDBAccess
             this.ProgramTables = new HashSet<ProgramTable>();
             this.RoomTables = new HashSet<RoomTable>();
             this.SchoolLeavingTables = new HashSet<SchoolLeavingTable>();
-            this.SessionProgramSubjectSettingTables = new HashSet<SessionProgramSubjectSettingTable>();
             this.SessionTables = new HashSet<SessionTable>();
             this.StaffTables = new HashSet<StaffTable>();
             this.StudentTables = new HashSet<StudentTable>();
@@ -78,8 +77,6 @@ namespace SchoolDBAccess
         public virtual ICollection<RoomTable> RoomTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SchoolLeavingTable> SchoolLeavingTables { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SessionProgramSubjectSettingTable> SessionProgramSubjectSettingTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SessionTable> SessionTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,13 +1,13 @@
-﻿@model SchoolDBAccess.AnnualTable
+﻿@model SchoolDBAccess.ProgramSession
 
 @{
-    ViewBag.Title = "Fee";
+    ViewBag.Title = "Program Details";
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>Fee</h4>
+    <h4>Program Session</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -19,19 +19,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Fees)
+            @Html.DisplayNameFor(model => model.RegDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Fees)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
+            @Html.DisplayFor(model => model.RegDate)
         </dd>
 
         <dt>
@@ -51,6 +43,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.SessionTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SessionTable.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.UserTable.FullName)
         </dt>
 
@@ -61,6 +61,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AnnualID }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProgramSessionID }, new { @class = "btn btn-primary" }) |
     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
 </p>

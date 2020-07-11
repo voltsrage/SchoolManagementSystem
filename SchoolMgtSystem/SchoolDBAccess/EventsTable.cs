@@ -11,16 +11,24 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class EventsTable
     {
+        [Key]
+        [Display(Name = "Event ID")]
         public int EventID { get; set; }
+        [Display(Name = "Event Title")]
         public string EventTitle { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Event Date")]
         public Nullable<System.DateTime> EventDate { get; set; }
         public string Location { get; set; }
         public string Description { get; set; }
+        [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
-    
+
+
         public virtual UserTable UserTable { get; set; }
     }
 }

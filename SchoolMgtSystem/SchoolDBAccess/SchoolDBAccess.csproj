@@ -62,10 +62,28 @@
     <Compile Include="DesignationTable.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeCertificationTable.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeEducationTable.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeLanguageTable.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeResumeTable.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeSalaryTable.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsTable.cs">
+    <Compile Include="EmployeeSkillTable.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeWorkExperienceTable.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventTable.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ExamSettingTable.cs">

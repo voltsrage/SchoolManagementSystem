@@ -10,7 +10,6 @@
         <EntityTypeShape EntityType="SchoolMgtDbModel.ClassTable" Width="1.5" PointX="5.25" PointY="57.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.DesignationTable" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.EmployeeSalaryTable" Width="1.5" PointX="9.75" PointY="25.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SchoolMgtDbModel.EventsTable" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.ExamSettingTable" Width="1.5" PointX="7.5" PointY="39.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.ExamTable" Width="1.5" PointX="5.25" PointY="32.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.ExpensesTable" Width="1.5" PointX="5.25" PointY="28.875" IsExpanded="true" />
@@ -48,7 +47,6 @@
         <AssociationConnector Association="SchoolMgtDbModel.FK_UserTable_DesignationTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_StaffTable_EmployeeSalaryTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_UserTable_EmployeeSalaryTable" ManuallyRouted="false" />
-        <AssociationConnector Association="SchoolMgtDbModel.FK_UserTable_EventsTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_ExamTable_ExamSettingTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_ProgramSessionTable_ExamSettingTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_SessionTable_ExamSettingTable" ManuallyRouted="false" />
@@ -84,6 +82,25 @@
         <AssociationConnector Association="SchoolMgtDbModel.FK_UserTable_SubmissionTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_UserTable_TimeTableTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_UserTypeTable_UserTable" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_UserTable_SectionTable" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.EmployeeCertificationTable" Width="1.5" PointX="8.625" PointY="17.5" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.EmployeeEducationTable" Width="1.5" PointX="5.625" PointY="14.25" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.EmployeeLanguageTable" Width="1.5" PointX="7.625" PointY="21.75" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.EmployeeResumeTable" Width="1.5" PointX="3.375" PointY="7.5" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.EmployeeSkillTable" Width="1.5" PointX="5.625" PointY="18.875" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.EmployeeWorkExperienceTable" Width="1.5" PointX="10.625" PointY="21.375" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.EventTable" Width="1.5" PointX="5.25" PointY="25.5" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_dbo_EmployeeResumeTable_dbo_EmployeeResumeTable_EmployeeResumeID" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_UserTable_EmployeeCertificationTable" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_dbo_UserTable_dbo_EmployeeEducationTable" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_EmployeeEducationTable_EmployeeResumeTable" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_dbo_EmployeeLanguageTable_dbo_EmployeeResumeTable_EmployeeResumeID" />
+        <AssociationConnector Association="SchoolMgtDbModel.FKUserTable_EmployeeLanguageTable" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_dbo_EmployeeSkillTable_dbo_EmployeeResumeTable_EmployeeResumeID" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_dbo_EmployeeWorkExperienceTable_dbo_EmployeeResumeTable_EmployeeResumeID" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_UserTable_EmployeeSkillTable" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_UserTable_EmployeeWorkExperienceTable" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_UserTable_EventTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

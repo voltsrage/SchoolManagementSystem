@@ -22,8 +22,10 @@ namespace SchoolDBAccess
     
         public int SectionID { get; set; }
         public string SectionName { get; set; }
+        public Nullable<int> UserID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentPromotionTable> StudentPromotionTables { get; set; }
+        public virtual UserTable UserTable { get; set; }
     }
 }

@@ -30,7 +30,6 @@ namespace SchoolDBAccess
         public virtual DbSet<ClassTable> ClassTables { get; set; }
         public virtual DbSet<DesignationTable> DesignationTables { get; set; }
         public virtual DbSet<EmployeeSalaryTable> EmployeeSalaryTables { get; set; }
-        public virtual DbSet<EventsTable> EventsTables { get; set; }
         public virtual DbSet<ExamSettingTable> ExamSettingTables { get; set; }
         public virtual DbSet<ExamTable> ExamTables { get; set; }
         public virtual DbSet<ExpensesTable> ExpensesTables { get; set; }
@@ -53,5 +52,12 @@ namespace SchoolDBAccess
         public virtual DbSet<TimeTableTable> TimeTableTables { get; set; }
         public virtual DbSet<UserTable> UserTables { get; set; }
         public virtual DbSet<UserTypeTable> UserTypeTables { get; set; }
+        public virtual DbSet<EmployeeCertificationTable> EmployeeCertificationTables { get; set; }
+        public virtual DbSet<EmployeeEducationTable> EmployeeEducationTables { get; set; }
+        public virtual DbSet<EmployeeLanguageTable> EmployeeLanguageTables { get; set; }
+        public virtual DbSet<EmployeeResumeTable> EmployeeResumeTables { get; set; }
+        public virtual DbSet<EmployeeSkillTable> EmployeeSkillTables { get; set; }
+        public virtual DbSet<EmployeeWorkExperienceTable> EmployeeWorkExperienceTables { get; set; }
+        public virtual DbSet<EventTable> EventTables { get; set; }
     }
 }

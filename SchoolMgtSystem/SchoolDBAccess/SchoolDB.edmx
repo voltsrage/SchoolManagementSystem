@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SchoolMgtDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SchoolMgtDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AnnualTable">
           <Key>
             <PropertyRef Name="AnnualID" />
@@ -44,6 +44,64 @@
           <Property Name="Title" Type="nvarchar" MaxLength="150" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <EntityType Name="EmployeeCertificationTable">
+          <Key>
+            <PropertyRef Name="EmployeeCertificationID" />
+          </Key>
+          <Property Name="EmployeeCertificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CertificationName" Type="nvarchar(max)" />
+          <Property Name="CertificationAuthority" Type="nvarchar(max)" />
+          <Property Name="LevelCertification" Type="nvarchar(max)" />
+          <Property Name="FromYear" Type="datetime" />
+          <Property Name="EmployeeResumeID" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeEducationTable">
+          <Key>
+            <PropertyRef Name="EmployeeEducationID" />
+          </Key>
+          <Property Name="EmployeeEducationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InstituteUniversity" Type="nvarchar(max)" />
+          <Property Name="TitleOfDiploma" Type="nvarchar(max)" />
+          <Property Name="Degree" Type="nvarchar(max)" />
+          <Property Name="FromYear" Type="datetime" />
+          <Property Name="ToYear" Type="datetime" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="EmployeeResumeID" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeLanguageTable">
+          <Key>
+            <PropertyRef Name="EmployeeLanguageID" />
+          </Key>
+          <Property Name="EmployeeLanguageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LanguageName" Type="nvarchar(max)" />
+          <Property Name="Proficiency" Type="nvarchar(max)" />
+          <Property Name="EmployeeResumeID" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeResumeTable">
+          <Key>
+            <PropertyRef Name="EmployeeResumeID" />
+          </Key>
+          <Property Name="EmployeeResumeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Nationality" Type="nvarchar(max)" />
+          <Property Name="EducationalLevel" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Tel" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Summary" Type="nvarchar(max)" />
+          <Property Name="LinkedInProfile" Type="nvarchar(max)" />
+          <Property Name="FaceBookProfile" Type="nvarchar(max)" />
+          <Property Name="C_CornerProfile" Type="nvarchar(max)" />
+          <Property Name="TwitterProfile" Type="nvarchar(max)" />
+          <Property Name="Profile" Type="varbinary(max)" />
+          <Property Name="EmployeeID" Type="int" />
+        </EntityType>
         <EntityType Name="EmployeeSalaryTable">
           <Key>
             <PropertyRef Name="EmployeeSalaryID" />
@@ -57,16 +115,39 @@
           <Property Name="SalaryDate" Type="date" />
           <Property Name="Comments" Type="nvarchar" MaxLength="300" />
         </EntityType>
-        <EntityType Name="EventsTable">
+        <EntityType Name="EmployeeSkillTable">
+          <Key>
+            <PropertyRef Name="EmployeeSkillID" />
+          </Key>
+          <Property Name="EmployeeSkillID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SkillName" Type="nvarchar(max)" />
+          <Property Name="EmployeeResumeID" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeWorkExperienceTable">
+          <Key>
+            <PropertyRef Name="EmployeeWorkExperienceID" />
+          </Key>
+          <Property Name="EmployeeWorkExperienceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Company" Type="nvarchar(max)" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="FromYear" Type="datetime" />
+          <Property Name="ToYear" Type="datetime" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="EmployeeResumeID" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventTable">
           <Key>
             <PropertyRef Name="EventID" />
           </Key>
           <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EventTitle" Type="nvarchar" MaxLength="150" />
-          <Property Name="EventDate" Type="date" />
-          <Property Name="Location" Type="nvarchar" MaxLength="300" />
-          <Property Name="Description" Type="nvarchar" MaxLength="300" />
-          <Property Name="UserID" Type="int" />
+          <Property Name="EventTitle" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EventDate" Type="datetime" Nullable="false" />
+          <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ExamSettingTable">
           <Key>
@@ -172,6 +253,7 @@
           </Key>
           <Property Name="SectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SectionName" Type="nvarchar" MaxLength="150" />
+          <Property Name="UserID" Type="int" />
         </EntityType>
         <EntityType Name="SessionTable">
           <Key>
@@ -436,6 +518,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_EmployeeLanguageTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+          <End Role="EmployeeResumeTable" Type="Self.EmployeeResumeTable" Multiplicity="0..1" />
+          <End Role="EmployeeLanguageTable" Type="Self.EmployeeLanguageTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeResumeTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Principal>
+            <Dependent Role="EmployeeLanguageTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmployeeResumeTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+          <End Role="EmployeeResumeTable" Type="Self.EmployeeResumeTable" Multiplicity="0..1" />
+          <End Role="EmployeeCertificationTable" Type="Self.EmployeeCertificationTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeResumeTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Principal>
+            <Dependent Role="EmployeeCertificationTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmployeeSkillTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+          <End Role="EmployeeResumeTable" Type="Self.EmployeeResumeTable" Multiplicity="0..1" />
+          <End Role="EmployeeSkillTable" Type="Self.EmployeeSkillTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeResumeTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Principal>
+            <Dependent Role="EmployeeSkillTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmployeeWorkExperienceTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+          <End Role="EmployeeResumeTable" Type="Self.EmployeeResumeTable" Multiplicity="0..1" />
+          <End Role="EmployeeWorkExperienceTable" Type="Self.EmployeeWorkExperienceTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeResumeTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Principal>
+            <Dependent Role="EmployeeWorkExperienceTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserTable_dbo_EmployeeEducationTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="EmployeeEducationTable" Type="Self.EmployeeEducationTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EmployeeEducationTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DesignationTable_StaffTable">
           <End Role="DesignationTable" Type="Self.DesignationTable" Multiplicity="0..1" />
           <End Role="StaffTable" Type="Self.StaffTable" Multiplicity="*" />
@@ -445,6 +587,18 @@
             </Principal>
             <Dependent Role="StaffTable">
               <PropertyRef Name="DesignationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeEducationTable_EmployeeResumeTable">
+          <End Role="EmployeeResumeTable" Type="Self.EmployeeResumeTable" Multiplicity="0..1" />
+          <End Role="EmployeeEducationTable" Type="Self.EmployeeEducationTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeResumeTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Principal>
+            <Dependent Role="EmployeeEducationTable">
+              <PropertyRef Name="EmployeeResumeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -760,6 +914,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserTable_EmployeeCertificationTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="EmployeeCertificationTable" Type="Self.EmployeeCertificationTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EmployeeCertificationTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserTable_EmployeeSalaryTable">
           <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
           <End Role="EmployeeSalaryTable" Type="Self.EmployeeSalaryTable" Multiplicity="*" />
@@ -772,14 +938,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserTable_EventsTable">
-          <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
-          <End Role="EventsTable" Type="Self.EventsTable" Multiplicity="*" />
+        <Association Name="FK_UserTable_EmployeeSkillTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="EmployeeSkillTable" Type="Self.EmployeeSkillTable" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserTable">
               <PropertyRef Name="UserID" />
             </Principal>
-            <Dependent Role="EventsTable">
+            <Dependent Role="EmployeeSkillTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTable_EmployeeWorkExperienceTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="EmployeeWorkExperienceTable" Type="Self.EmployeeWorkExperienceTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EmployeeWorkExperienceTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTable_EventTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="EventTable" Type="Self.EventTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EventTable">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
@@ -868,6 +1058,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserTable_SectionTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+          <End Role="SectionTable" Type="Self.SectionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SectionTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserTable_SessionTable">
           <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
           <End Role="SessionTable" Type="Self.SessionTable" Multiplicity="*" />
@@ -952,13 +1154,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FKUserTable_EmployeeLanguageTable">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="EmployeeLanguageTable" Type="Self.EmployeeLanguageTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EmployeeLanguageTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SchoolMgtDbModelStoreContainer">
           <EntitySet Name="AnnualTable" EntityType="Self.AnnualTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClassSubjectTable" EntityType="Self.ClassSubjectTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClassTable" EntityType="Self.ClassTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DesignationTable" EntityType="Self.DesignationTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeCertificationTable" EntityType="Self.EmployeeCertificationTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeEducationTable" EntityType="Self.EmployeeEducationTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeLanguageTable" EntityType="Self.EmployeeLanguageTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeResumeTable" EntityType="Self.EmployeeResumeTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeSalaryTable" EntityType="Self.EmployeeSalaryTable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="EventsTable" EntityType="Self.EventsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeSkillTable" EntityType="Self.EmployeeSkillTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeWorkExperienceTable" EntityType="Self.EmployeeWorkExperienceTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventTable" EntityType="Self.EventTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExamSettingTable" EntityType="Self.ExamSettingTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExamTable" EntityType="Self.ExamTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExpensesTable" EntityType="Self.ExpensesTable" Schema="dbo" store:Type="Tables" />
@@ -1013,9 +1233,33 @@
             <End Role="ClassTable" EntitySet="ClassTable" />
             <End Role="SubmissionTable" EntitySet="SubmissionTable" />
           </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeeLanguageTable_dbo_EmployeeResumeTable_EmployeeResumeID" Association="Self.FK_dbo_EmployeeLanguageTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+            <End Role="EmployeeResumeTable" EntitySet="EmployeeResumeTable" />
+            <End Role="EmployeeLanguageTable" EntitySet="EmployeeLanguageTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeeResumeTable_dbo_EmployeeResumeTable_EmployeeResumeID" Association="Self.FK_dbo_EmployeeResumeTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+            <End Role="EmployeeResumeTable" EntitySet="EmployeeResumeTable" />
+            <End Role="EmployeeCertificationTable" EntitySet="EmployeeCertificationTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeeSkillTable_dbo_EmployeeResumeTable_EmployeeResumeID" Association="Self.FK_dbo_EmployeeSkillTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+            <End Role="EmployeeResumeTable" EntitySet="EmployeeResumeTable" />
+            <End Role="EmployeeSkillTable" EntitySet="EmployeeSkillTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeeWorkExperienceTable_dbo_EmployeeResumeTable_EmployeeResumeID" Association="Self.FK_dbo_EmployeeWorkExperienceTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+            <End Role="EmployeeResumeTable" EntitySet="EmployeeResumeTable" />
+            <End Role="EmployeeWorkExperienceTable" EntitySet="EmployeeWorkExperienceTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserTable_dbo_EmployeeEducationTable" Association="Self.FK_dbo_UserTable_dbo_EmployeeEducationTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="EmployeeEducationTable" EntitySet="EmployeeEducationTable" />
+          </AssociationSet>
           <AssociationSet Name="FK_DesignationTable_StaffTable" Association="Self.FK_DesignationTable_StaffTable">
             <End Role="DesignationTable" EntitySet="DesignationTable" />
             <End Role="StaffTable" EntitySet="StaffTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeEducationTable_EmployeeResumeTable" Association="Self.FK_EmployeeEducationTable_EmployeeResumeTable">
+            <End Role="EmployeeResumeTable" EntitySet="EmployeeResumeTable" />
+            <End Role="EmployeeEducationTable" EntitySet="EmployeeEducationTable" />
           </AssociationSet>
           <AssociationSet Name="FK_Examable_MarksTable" Association="Self.FK_Examable_MarksTable">
             <End Role="ExamTable" EntitySet="ExamTable" />
@@ -1121,13 +1365,25 @@
             <End Role="UserTable" EntitySet="UserTable" />
             <End Role="DesignationTable" EntitySet="DesignationTable" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserTable_EmployeeCertificationTable" Association="Self.FK_UserTable_EmployeeCertificationTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="EmployeeCertificationTable" EntitySet="EmployeeCertificationTable" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserTable_EmployeeSalaryTable" Association="Self.FK_UserTable_EmployeeSalaryTable">
             <End Role="UserTable" EntitySet="UserTable" />
             <End Role="EmployeeSalaryTable" EntitySet="EmployeeSalaryTable" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserTable_EventsTable" Association="Self.FK_UserTable_EventsTable">
+          <AssociationSet Name="FK_UserTable_EmployeeSkillTable" Association="Self.FK_UserTable_EmployeeSkillTable">
             <End Role="UserTable" EntitySet="UserTable" />
-            <End Role="EventsTable" EntitySet="EventsTable" />
+            <End Role="EmployeeSkillTable" EntitySet="EmployeeSkillTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTable_EmployeeWorkExperienceTable" Association="Self.FK_UserTable_EmployeeWorkExperienceTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="EmployeeWorkExperienceTable" EntitySet="EmployeeWorkExperienceTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTable_EventTable" Association="Self.FK_UserTable_EventTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="EventTable" EntitySet="EventTable" />
           </AssociationSet>
           <AssociationSet Name="FK_UserTable_ExamSettingTable" Association="Self.FK_UserTable_ExamSettingTable">
             <End Role="UserTable" EntitySet="UserTable" />
@@ -1157,6 +1413,10 @@
             <End Role="UserTable" EntitySet="UserTable" />
             <End Role="SchoolLeavingTable" EntitySet="SchoolLeavingTable" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserTable_SectionTable" Association="Self.FK_UserTable_SectionTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="SectionTable" EntitySet="SectionTable" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserTable_SessionTable" Association="Self.FK_UserTable_SessionTable">
             <End Role="UserTable" EntitySet="UserTable" />
             <End Role="SessionTable" EntitySet="SessionTable" />
@@ -1185,9 +1445,12 @@
             <End Role="UserTypeTable" EntitySet="UserTypeTable" />
             <End Role="UserTable" EntitySet="UserTable" />
           </AssociationSet>
+          <AssociationSet Name="FKUserTable_EmployeeLanguageTable" Association="Self.FKUserTable_EmployeeLanguageTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="EmployeeLanguageTable" EntitySet="EmployeeLanguageTable" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SchoolMgtDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1258,18 +1521,6 @@
           <Property Name="Comments" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="StaffTable" Relationship="Self.FK_StaffTable_EmployeeSalaryTable" FromRole="EmployeeSalaryTable" ToRole="StaffTable" />
           <NavigationProperty Name="UserTable" Relationship="Self.FK_UserTable_EmployeeSalaryTable" FromRole="EmployeeSalaryTable" ToRole="UserTable" />
-        </EntityType>
-        <EntityType Name="EventsTable">
-          <Key>
-            <PropertyRef Name="EventID" />
-          </Key>
-          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EventTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="EventDate" Type="DateTime" Precision="0" />
-          <Property Name="Location" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="UserID" Type="Int32" />
-          <NavigationProperty Name="UserTable" Relationship="Self.FK_UserTable_EventsTable" FromRole="EventsTable" ToRole="UserTable" />
         </EntityType>
         <EntityType Name="ExamSettingTable">
           <Key>
@@ -1404,6 +1655,8 @@
           <Property Name="SectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SectionName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="StudentPromotionTables" Relationship="Self.FK_SectionTable_StudentPromotionTable" FromRole="SectionTable" ToRole="StudentPromotionTable" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="UserTable" Relationship="SchoolMgtDbModel.FK_UserTable_SectionTable" FromRole="SectionTable" ToRole="UserTable" />
         </EntityType>
         <EntityType Name="SessionTable">
           <Key>
@@ -1602,7 +1855,6 @@
           <NavigationProperty Name="AnnualTables" Relationship="Self.FK_UserTable_AnnualTable" FromRole="UserTable" ToRole="AnnualTable" />
           <NavigationProperty Name="DesignationTables" Relationship="Self.FK_UserTable_DesignationTable" FromRole="UserTable" ToRole="DesignationTable" />
           <NavigationProperty Name="EmployeeSalaryTables" Relationship="Self.FK_UserTable_EmployeeSalaryTable" FromRole="UserTable" ToRole="EmployeeSalaryTable" />
-          <NavigationProperty Name="EventsTables" Relationship="Self.FK_UserTable_EventsTable" FromRole="UserTable" ToRole="EventsTable" />
           <NavigationProperty Name="ExamSettingTables" Relationship="Self.FK_UserTable_ExamSettingTable" FromRole="UserTable" ToRole="ExamSettingTable" />
           <NavigationProperty Name="ExamTables" Relationship="Self.FK_UserTable_ExamTable" FromRole="UserTable" ToRole="ExamTable" />
           <NavigationProperty Name="ExpensesTables" Relationship="Self.FK_UserTable_ExpensesTable" FromRole="UserTable" ToRole="ExpensesTable" />
@@ -1618,6 +1870,13 @@
           <NavigationProperty Name="SubmissionTables" Relationship="Self.FK_UserTable_SubmissionTable" FromRole="UserTable" ToRole="SubmissionTable" />
           <NavigationProperty Name="TimeTableTables" Relationship="Self.FK_UserTable_TimeTableTable" FromRole="UserTable" ToRole="TimeTableTable" />
           <NavigationProperty Name="UserTypeTable" Relationship="Self.FK_UserTypeTable_UserTable" FromRole="UserTable" ToRole="UserTypeTable" />
+          <NavigationProperty Name="SectionTables" Relationship="SchoolMgtDbModel.FK_UserTable_SectionTable" FromRole="UserTable" ToRole="SectionTable" />
+          <NavigationProperty Name="EmployeeCertificationTables" Relationship="SchoolMgtDbModel.FK_UserTable_EmployeeCertificationTable" FromRole="UserTable" ToRole="EmployeeCertificationTable" />
+          <NavigationProperty Name="EmployeeEducationTables" Relationship="SchoolMgtDbModel.FK_dbo_UserTable_dbo_EmployeeEducationTable" FromRole="UserTable" ToRole="EmployeeEducationTable" />
+          <NavigationProperty Name="EmployeeLanguageTables" Relationship="SchoolMgtDbModel.FKUserTable_EmployeeLanguageTable" FromRole="UserTable" ToRole="EmployeeLanguageTable" />
+          <NavigationProperty Name="EmployeeSkillTables" Relationship="SchoolMgtDbModel.FK_UserTable_EmployeeSkillTable" FromRole="UserTable" ToRole="EmployeeSkillTable" />
+          <NavigationProperty Name="EmployeeWorkExperienceTables" Relationship="SchoolMgtDbModel.FK_UserTable_EmployeeWorkExperienceTable" FromRole="UserTable" ToRole="EmployeeWorkExperienceTable" />
+          <NavigationProperty Name="EventTables" Relationship="SchoolMgtDbModel.FK_UserTable_EventTable" FromRole="UserTable" ToRole="EventTable" />
         </EntityType>
         <EntityType Name="UserTypeTable">
           <Key>
@@ -1804,18 +2063,6 @@
               <PropertyRef Name="UserID" />
             </Principal>
             <Dependent Role="EmployeeSalaryTable">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserTable_EventsTable">
-          <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
-          <End Role="EventsTable" Type="Self.EventsTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserTable">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="EventsTable">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
@@ -2246,7 +2493,6 @@
           <EntitySet Name="ClassTables" EntityType="Self.ClassTable" />
           <EntitySet Name="DesignationTables" EntityType="Self.DesignationTable" />
           <EntitySet Name="EmployeeSalaryTables" EntityType="Self.EmployeeSalaryTable" />
-          <EntitySet Name="EventsTables" EntityType="Self.EventsTable" />
           <EntitySet Name="ExamSettingTables" EntityType="Self.ExamSettingTable" />
           <EntitySet Name="ExamTables" EntityType="Self.ExamTable" />
           <EntitySet Name="ExpensesTables" EntityType="Self.ExpensesTable" />
@@ -2328,10 +2574,6 @@
           <AssociationSet Name="FK_UserTable_EmployeeSalaryTable" Association="Self.FK_UserTable_EmployeeSalaryTable">
             <End Role="UserTable" EntitySet="UserTables" />
             <End Role="EmployeeSalaryTable" EntitySet="EmployeeSalaryTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserTable_EventsTable" Association="Self.FK_UserTable_EventsTable">
-            <End Role="UserTable" EntitySet="UserTables" />
-            <End Role="EventsTable" EntitySet="EventsTables" />
           </AssociationSet>
           <AssociationSet Name="FK_ExamTable_ExamSettingTable" Association="Self.FK_ExamTable_ExamSettingTable">
             <End Role="ExamTable" EntitySet="ExamTables" />
@@ -2473,7 +2715,314 @@
             <End Role="UserTypeTable" EntitySet="UserTypeTables" />
             <End Role="UserTable" EntitySet="UserTables" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserTable_SectionTable" Association="SchoolMgtDbModel.FK_UserTable_SectionTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="SectionTable" EntitySet="SectionTables" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeCertificationTables" EntityType="SchoolMgtDbModel.EmployeeCertificationTable" />
+          <EntitySet Name="EmployeeEducationTables" EntityType="SchoolMgtDbModel.EmployeeEducationTable" />
+          <EntitySet Name="EmployeeLanguageTables" EntityType="SchoolMgtDbModel.EmployeeLanguageTable" />
+          <EntitySet Name="EmployeeResumeTables" EntityType="SchoolMgtDbModel.EmployeeResumeTable" />
+          <EntitySet Name="EmployeeSkillTables" EntityType="SchoolMgtDbModel.EmployeeSkillTable" />
+          <EntitySet Name="EmployeeWorkExperienceTables" EntityType="SchoolMgtDbModel.EmployeeWorkExperienceTable" />
+          <EntitySet Name="EventTables" EntityType="SchoolMgtDbModel.EventTable" />
+          <AssociationSet Name="FK_dbo_EmployeeResumeTable_dbo_EmployeeResumeTable_EmployeeResumeID" Association="SchoolMgtDbModel.FK_dbo_EmployeeResumeTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+            <End Role="EmployeeResumeTable" EntitySet="EmployeeResumeTables" />
+            <End Role="EmployeeCertificationTable" EntitySet="EmployeeCertificationTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTable_EmployeeCertificationTable" Association="SchoolMgtDbModel.FK_UserTable_EmployeeCertificationTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="EmployeeCertificationTable" EntitySet="EmployeeCertificationTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserTable_dbo_EmployeeEducationTable" Association="SchoolMgtDbModel.FK_dbo_UserTable_dbo_EmployeeEducationTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="EmployeeEducationTable" EntitySet="EmployeeEducationTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeEducationTable_EmployeeResumeTable" Association="SchoolMgtDbModel.FK_EmployeeEducationTable_EmployeeResumeTable">
+            <End Role="EmployeeResumeTable" EntitySet="EmployeeResumeTables" />
+            <End Role="EmployeeEducationTable" EntitySet="EmployeeEducationTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeeLanguageTable_dbo_EmployeeResumeTable_EmployeeResumeID" Association="SchoolMgtDbModel.FK_dbo_EmployeeLanguageTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+            <End Role="EmployeeResumeTable" EntitySet="EmployeeResumeTables" />
+            <End Role="EmployeeLanguageTable" EntitySet="EmployeeLanguageTables" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserTable_EmployeeLanguageTable" Association="SchoolMgtDbModel.FKUserTable_EmployeeLanguageTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="EmployeeLanguageTable" EntitySet="EmployeeLanguageTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeeSkillTable_dbo_EmployeeResumeTable_EmployeeResumeID" Association="SchoolMgtDbModel.FK_dbo_EmployeeSkillTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+            <End Role="EmployeeResumeTable" EntitySet="EmployeeResumeTables" />
+            <End Role="EmployeeSkillTable" EntitySet="EmployeeSkillTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmployeeWorkExperienceTable_dbo_EmployeeResumeTable_EmployeeResumeID" Association="SchoolMgtDbModel.FK_dbo_EmployeeWorkExperienceTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+            <End Role="EmployeeResumeTable" EntitySet="EmployeeResumeTables" />
+            <End Role="EmployeeWorkExperienceTable" EntitySet="EmployeeWorkExperienceTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTable_EmployeeSkillTable" Association="SchoolMgtDbModel.FK_UserTable_EmployeeSkillTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="EmployeeSkillTable" EntitySet="EmployeeSkillTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTable_EmployeeWorkExperienceTable" Association="SchoolMgtDbModel.FK_UserTable_EmployeeWorkExperienceTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="EmployeeWorkExperienceTable" EntitySet="EmployeeWorkExperienceTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTable_EventTable" Association="SchoolMgtDbModel.FK_UserTable_EventTable">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="EventTable" EntitySet="EventTables" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_UserTable_SectionTable">
+          <End Type="SchoolMgtDbModel.UserTable" Role="UserTable" Multiplicity="0..1" />
+          <End Type="SchoolMgtDbModel.SectionTable" Role="SectionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SectionTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EmployeeCertificationTable">
+          <Key>
+            <PropertyRef Name="EmployeeCertificationID" />
+          </Key>
+          <Property Name="EmployeeCertificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CertificationName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CertificationAuthority" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LevelCertification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FromYear" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeResumeID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmployeeResumeTable" Relationship="SchoolMgtDbModel.FK_dbo_EmployeeResumeTable_dbo_EmployeeResumeTable_EmployeeResumeID" FromRole="EmployeeCertificationTable" ToRole="EmployeeResumeTable" />
+          <NavigationProperty Name="UserTable" Relationship="SchoolMgtDbModel.FK_UserTable_EmployeeCertificationTable" FromRole="EmployeeCertificationTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="EmployeeEducationTable">
+          <Key>
+            <PropertyRef Name="EmployeeEducationID" />
+          </Key>
+          <Property Name="EmployeeEducationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstituteUniversity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TitleOfDiploma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Degree" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FromYear" Type="DateTime" Precision="3" />
+          <Property Name="ToYear" Type="DateTime" Precision="3" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeResumeID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserTable" Relationship="SchoolMgtDbModel.FK_dbo_UserTable_dbo_EmployeeEducationTable" FromRole="EmployeeEducationTable" ToRole="UserTable" />
+          <NavigationProperty Name="EmployeeResumeTable" Relationship="SchoolMgtDbModel.FK_EmployeeEducationTable_EmployeeResumeTable" FromRole="EmployeeEducationTable" ToRole="EmployeeResumeTable" />
+        </EntityType>
+        <EntityType Name="EmployeeLanguageTable">
+          <Key>
+            <PropertyRef Name="EmployeeLanguageID" />
+          </Key>
+          <Property Name="EmployeeLanguageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Proficiency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeResumeID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmployeeResumeTable" Relationship="SchoolMgtDbModel.FK_dbo_EmployeeLanguageTable_dbo_EmployeeResumeTable_EmployeeResumeID" FromRole="EmployeeLanguageTable" ToRole="EmployeeResumeTable" />
+          <NavigationProperty Name="UserTable" Relationship="SchoolMgtDbModel.FKUserTable_EmployeeLanguageTable" FromRole="EmployeeLanguageTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="EmployeeResumeTable">
+          <Key>
+            <PropertyRef Name="EmployeeResumeID" />
+          </Key>
+          <Property Name="EmployeeResumeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Nationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EducationalLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LinkedInProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FaceBookProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="C_CornerProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TwitterProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Profile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <NavigationProperty Name="EmployeeCertificationTables" Relationship="SchoolMgtDbModel.FK_dbo_EmployeeResumeTable_dbo_EmployeeResumeTable_EmployeeResumeID" FromRole="EmployeeResumeTable" ToRole="EmployeeCertificationTable" />
+          <NavigationProperty Name="EmployeeEducationTables" Relationship="SchoolMgtDbModel.FK_EmployeeEducationTable_EmployeeResumeTable" FromRole="EmployeeResumeTable" ToRole="EmployeeEducationTable" />
+          <NavigationProperty Name="EmployeeLanguageTables" Relationship="SchoolMgtDbModel.FK_dbo_EmployeeLanguageTable_dbo_EmployeeResumeTable_EmployeeResumeID" FromRole="EmployeeResumeTable" ToRole="EmployeeLanguageTable" />
+          <NavigationProperty Name="EmployeeSkillTables" Relationship="SchoolMgtDbModel.FK_dbo_EmployeeSkillTable_dbo_EmployeeResumeTable_EmployeeResumeID" FromRole="EmployeeResumeTable" ToRole="EmployeeSkillTable" />
+          <NavigationProperty Name="EmployeeWorkExperienceTables" Relationship="SchoolMgtDbModel.FK_dbo_EmployeeWorkExperienceTable_dbo_EmployeeResumeTable_EmployeeResumeID" FromRole="EmployeeResumeTable" ToRole="EmployeeWorkExperienceTable" />
+        </EntityType>
+        <EntityType Name="EmployeeSkillTable">
+          <Key>
+            <PropertyRef Name="EmployeeSkillID" />
+          </Key>
+          <Property Name="EmployeeSkillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SkillName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeResumeID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmployeeResumeTable" Relationship="SchoolMgtDbModel.FK_dbo_EmployeeSkillTable_dbo_EmployeeResumeTable_EmployeeResumeID" FromRole="EmployeeSkillTable" ToRole="EmployeeResumeTable" />
+          <NavigationProperty Name="UserTable" Relationship="SchoolMgtDbModel.FK_UserTable_EmployeeSkillTable" FromRole="EmployeeSkillTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="EmployeeWorkExperienceTable">
+          <Key>
+            <PropertyRef Name="EmployeeWorkExperienceID" />
+          </Key>
+          <Property Name="EmployeeWorkExperienceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FromYear" Type="DateTime" Precision="3" />
+          <Property Name="ToYear" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeResumeID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmployeeResumeTable" Relationship="SchoolMgtDbModel.FK_dbo_EmployeeWorkExperienceTable_dbo_EmployeeResumeTable_EmployeeResumeID" FromRole="EmployeeWorkExperienceTable" ToRole="EmployeeResumeTable" />
+          <NavigationProperty Name="UserTable" Relationship="SchoolMgtDbModel.FK_UserTable_EmployeeWorkExperienceTable" FromRole="EmployeeWorkExperienceTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="EventTable">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventTitle" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EventDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserTable" Relationship="SchoolMgtDbModel.FK_UserTable_EventTable" FromRole="EventTable" ToRole="UserTable" />
+        </EntityType>
+        <Association Name="FK_dbo_EmployeeResumeTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+          <End Type="SchoolMgtDbModel.EmployeeResumeTable" Role="EmployeeResumeTable" Multiplicity="0..1" />
+          <End Type="SchoolMgtDbModel.EmployeeCertificationTable" Role="EmployeeCertificationTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeResumeTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Principal>
+            <Dependent Role="EmployeeCertificationTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTable_EmployeeCertificationTable">
+          <End Type="SchoolMgtDbModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.EmployeeCertificationTable" Role="EmployeeCertificationTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EmployeeCertificationTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserTable_dbo_EmployeeEducationTable">
+          <End Type="SchoolMgtDbModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.EmployeeEducationTable" Role="EmployeeEducationTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EmployeeEducationTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeEducationTable_EmployeeResumeTable">
+          <End Type="SchoolMgtDbModel.EmployeeResumeTable" Role="EmployeeResumeTable" Multiplicity="0..1" />
+          <End Type="SchoolMgtDbModel.EmployeeEducationTable" Role="EmployeeEducationTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeResumeTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Principal>
+            <Dependent Role="EmployeeEducationTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmployeeLanguageTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+          <End Type="SchoolMgtDbModel.EmployeeResumeTable" Role="EmployeeResumeTable" Multiplicity="0..1" />
+          <End Type="SchoolMgtDbModel.EmployeeLanguageTable" Role="EmployeeLanguageTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeResumeTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Principal>
+            <Dependent Role="EmployeeLanguageTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserTable_EmployeeLanguageTable">
+          <End Type="SchoolMgtDbModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.EmployeeLanguageTable" Role="EmployeeLanguageTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EmployeeLanguageTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmployeeSkillTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+          <End Type="SchoolMgtDbModel.EmployeeResumeTable" Role="EmployeeResumeTable" Multiplicity="0..1" />
+          <End Type="SchoolMgtDbModel.EmployeeSkillTable" Role="EmployeeSkillTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeResumeTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Principal>
+            <Dependent Role="EmployeeSkillTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmployeeWorkExperienceTable_dbo_EmployeeResumeTable_EmployeeResumeID">
+          <End Type="SchoolMgtDbModel.EmployeeResumeTable" Role="EmployeeResumeTable" Multiplicity="0..1" />
+          <End Type="SchoolMgtDbModel.EmployeeWorkExperienceTable" Role="EmployeeWorkExperienceTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeResumeTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Principal>
+            <Dependent Role="EmployeeWorkExperienceTable">
+              <PropertyRef Name="EmployeeResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTable_EmployeeSkillTable">
+          <End Type="SchoolMgtDbModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.EmployeeSkillTable" Role="EmployeeSkillTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EmployeeSkillTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTable_EmployeeWorkExperienceTable">
+          <End Type="SchoolMgtDbModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.EmployeeWorkExperienceTable" Role="EmployeeWorkExperienceTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EmployeeWorkExperienceTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTable_EventTable">
+          <End Type="SchoolMgtDbModel.UserTable" Role="UserTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.EventTable" Role="EventTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EventTable">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2534,18 +3083,6 @@
                 <ScalarProperty Name="SalaryYear" ColumnName="SalaryYear" />
                 <ScalarProperty Name="SalaryDate" ColumnName="SalaryDate" />
                 <ScalarProperty Name="Comments" ColumnName="Comments" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EventsTables">
-            <EntityTypeMapping TypeName="SchoolMgtDbModel.EventsTable">
-              <MappingFragment StoreEntitySet="EventsTable">
-                <ScalarProperty Name="EventID" ColumnName="EventID" />
-                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
-                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2659,6 +3196,7 @@
           <EntitySetMapping Name="SectionTables">
             <EntityTypeMapping TypeName="SchoolMgtDbModel.SectionTable">
               <MappingFragment StoreEntitySet="SectionTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="SectionID" ColumnName="SectionID" />
                 <ScalarProperty Name="SectionName" ColumnName="SectionName" />
               </MappingFragment>
@@ -2840,6 +3378,105 @@
                 <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeCertificationTables">
+            <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeCertificationTable">
+              <MappingFragment StoreEntitySet="EmployeeCertificationTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EmployeeResumeID" ColumnName="EmployeeResumeID" />
+                <ScalarProperty Name="FromYear" ColumnName="FromYear" />
+                <ScalarProperty Name="LevelCertification" ColumnName="LevelCertification" />
+                <ScalarProperty Name="CertificationAuthority" ColumnName="CertificationAuthority" />
+                <ScalarProperty Name="CertificationName" ColumnName="CertificationName" />
+                <ScalarProperty Name="EmployeeCertificationID" ColumnName="EmployeeCertificationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeEducationTables">
+            <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeEducationTable">
+              <MappingFragment StoreEntitySet="EmployeeEducationTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EmployeeResumeID" ColumnName="EmployeeResumeID" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ToYear" ColumnName="ToYear" />
+                <ScalarProperty Name="FromYear" ColumnName="FromYear" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="TitleOfDiploma" ColumnName="TitleOfDiploma" />
+                <ScalarProperty Name="InstituteUniversity" ColumnName="InstituteUniversity" />
+                <ScalarProperty Name="EmployeeEducationID" ColumnName="EmployeeEducationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeLanguageTables">
+            <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeLanguageTable">
+              <MappingFragment StoreEntitySet="EmployeeLanguageTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EmployeeResumeID" ColumnName="EmployeeResumeID" />
+                <ScalarProperty Name="Proficiency" ColumnName="Proficiency" />
+                <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+                <ScalarProperty Name="EmployeeLanguageID" ColumnName="EmployeeLanguageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeResumeTables">
+            <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeResumeTable">
+              <MappingFragment StoreEntitySet="EmployeeResumeTable">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Profile" ColumnName="Profile" />
+                <ScalarProperty Name="TwitterProfile" ColumnName="TwitterProfile" />
+                <ScalarProperty Name="C_CornerProfile" ColumnName="C_CornerProfile" />
+                <ScalarProperty Name="FaceBookProfile" ColumnName="FaceBookProfile" />
+                <ScalarProperty Name="LinkedInProfile" ColumnName="LinkedInProfile" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="EducationalLevel" ColumnName="EducationalLevel" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployeeResumeID" ColumnName="EmployeeResumeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeSkillTables">
+            <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeSkillTable">
+              <MappingFragment StoreEntitySet="EmployeeSkillTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EmployeeResumeID" ColumnName="EmployeeResumeID" />
+                <ScalarProperty Name="SkillName" ColumnName="SkillName" />
+                <ScalarProperty Name="EmployeeSkillID" ColumnName="EmployeeSkillID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeWorkExperienceTables">
+            <EntityTypeMapping TypeName="SchoolMgtDbModel.EmployeeWorkExperienceTable">
+              <MappingFragment StoreEntitySet="EmployeeWorkExperienceTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EmployeeResumeID" ColumnName="EmployeeResumeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ToYear" ColumnName="ToYear" />
+                <ScalarProperty Name="FromYear" ColumnName="FromYear" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="EmployeeWorkExperienceID" ColumnName="EmployeeWorkExperienceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventTables">
+            <EntityTypeMapping TypeName="SchoolMgtDbModel.EventTable">
+              <MappingFragment StoreEntitySet="EventTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

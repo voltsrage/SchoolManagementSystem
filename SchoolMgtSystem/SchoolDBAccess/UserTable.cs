@@ -11,8 +11,7 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class UserTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +20,6 @@ namespace SchoolDBAccess
             this.AnnualTables = new HashSet<AnnualTable>();
             this.DesignationTables = new HashSet<DesignationTable>();
             this.EmployeeSalaryTables = new HashSet<EmployeeSalaryTable>();
-            this.EventsTables = new HashSet<EventsTable>();
             this.ExamSettingTables = new HashSet<ExamSettingTable>();
             this.ExamTables = new HashSet<ExamTable>();
             this.ExpensesTables = new HashSet<ExpensesTable>();
@@ -36,31 +34,30 @@ namespace SchoolDBAccess
             this.SubjectTables = new HashSet<SubjectTable>();
             this.SubmissionTables = new HashSet<SubmissionTable>();
             this.TimeTableTables = new HashSet<TimeTableTable>();
+            this.SectionTables = new HashSet<SectionTable>();
+            this.EmployeeCertificationTables = new HashSet<EmployeeCertificationTable>();
+            this.EmployeeEducationTables = new HashSet<EmployeeEducationTable>();
+            this.EmployeeLanguageTables = new HashSet<EmployeeLanguageTable>();
+            this.EmployeeSkillTables = new HashSet<EmployeeSkillTable>();
+            this.EmployeeWorkExperienceTables = new HashSet<EmployeeWorkExperienceTable>();
+            this.EventTables = new HashSet<EventTable>();
         }
-
-        [Key]
-        [Display(Name = "User ID")]
+    
         public int UserID { get; set; }
-        [Display(Name = "User Type ID")]
         public Nullable<int> UserTypeID { get; set; }
-        [Display(Name = "User")]
         public string FullName { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        [Display(Name = "Contact No")]
         public string ContactNo { get; set; }
-        [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
         public string Address { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnnualTable> AnnualTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DesignationTable> DesignationTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeSalaryTable> EmployeeSalaryTables { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EventsTable> EventsTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamSettingTable> ExamSettingTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -90,5 +87,19 @@ namespace SchoolDBAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TimeTableTable> TimeTableTables { get; set; }
         public virtual UserTypeTable UserTypeTable { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SectionTable> SectionTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeCertificationTable> EmployeeCertificationTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeEducationTable> EmployeeEducationTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeLanguageTable> EmployeeLanguageTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeSkillTable> EmployeeSkillTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeWorkExperienceTable> EmployeeWorkExperienceTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EventTable> EventTables { get; set; }
     }
 }

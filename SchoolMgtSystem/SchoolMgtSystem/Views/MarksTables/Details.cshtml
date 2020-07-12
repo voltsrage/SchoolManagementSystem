@@ -1,0 +1,66 @@
+﻿@model SchoolDBAccess.MarksTable
+
+@{
+    ViewBag.Title = "Marks";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Marks</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubjectTotalMarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubjectTotalMarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubjectMarksAttained)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubjectMarksAttained)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassSubjectTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassSubjectTable.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExamTable.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamTable.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentTable.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserTable.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserTable.FullName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MarksID }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</p>

@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SchoolDBAccess;
+using SchoolMgtSystem.CustomerFilters;
 
 namespace SchoolMgtSystem.Controllers
 {
+    [UserAuthorizationFilter]
     public class ClassSubjectTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();
@@ -49,10 +51,19 @@ namespace SchoolMgtSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClassSubjectID,ClassID,SubjectID,Name,IsActive")] ClassSubjectTable classSubjectTable)
+        public ActionResult Create( ClassSubjectTable classSubjectTable)
         {
             if (ModelState.IsValid)
             {
+                var classname = db.ClassTables.Where(s => s.ClassID == classSubjectTable.ClassID).SingleOrDefault();
+                var subjectname = db.SubjectTables.Where(s => s.SubjectID == classSubjectTable.SubjectID).SingleOrDefault();
+                if (classname != null)
+                {
+                    
+                        var details = classname.Name + "-" + (subjectname != null ? subjectname.Name : "");
+                        classSubjectTable.Name = details;
+                   
+                }
                 db.ClassSubjectTables.Add(classSubjectTable);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -89,6 +100,15 @@ namespace SchoolMgtSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                var classname = db.ClassTables.Where(s => s.ClassID == classSubjectTable.ClassID).SingleOrDefault();
+                var subjectname = db.SubjectTables.Where(s => s.SubjectID == classSubjectTable.SubjectID).SingleOrDefault();
+                if (classname != null)
+                {
+                    
+                        var details = classname.Name + "-" + (subjectname != null ? subjectname.Name : "");
+                        classSubjectTable.Name = details;
+                    
+                }
                 db.Entry(classSubjectTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

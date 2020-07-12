@@ -1,13 +1,13 @@
 ﻿@model SchoolDBAccess.ClassTable
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Classes";
 }
 
-<h2>Details</h2>
+<h2>Class</h2>
 
 <div>
-    <h4>ClassTable</h4>
+    <h4>Details</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -29,6 +29,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ClassID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClassID }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
 </p>

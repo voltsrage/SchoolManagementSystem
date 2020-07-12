@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SchoolDBAccess;
+using SchoolMgtSystem.CustomerFilters;
 
 namespace SchoolMgtSystem.Controllers
 {
+    [UserAuthorizationFilter]
     public class ClassTablesController : Controller
     {
         private SchoolMgtDbEntities db = new SchoolMgtDbEntities();

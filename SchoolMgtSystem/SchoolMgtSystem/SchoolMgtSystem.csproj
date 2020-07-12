@@ -143,11 +143,14 @@
     <Compile Include="Controllers\ClassSubjectTablesController.cs" />
     <Compile Include="Controllers\ClassTablesController.cs" />
     <Compile Include="Controllers\DesignationTablesController.cs" />
+    <Compile Include="Controllers\ExamTablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MarksTablesController.cs" />
     <Compile Include="Controllers\ProgramSessionsController.cs" />
     <Compile Include="Controllers\ProgramTablesController.cs" />
     <Compile Include="Controllers\SessionTablesController.cs" />
     <Compile Include="Controllers\SubjectTablesController.cs" />
+    <Compile Include="Controllers\TimeTableTablesController.cs" />
     <Compile Include="Controllers\UserTablesController.cs" />
     <Compile Include="Controllers\UserTypeTablesController.cs" />
     <Compile Include="CustomerFilters\UserAuthorizationFilterAttribute.cs" />
@@ -2084,6 +2087,21 @@
     <Content Include="Views\ClassSubjectTables\Details.cshtml" />
     <Content Include="Views\ClassSubjectTables\Edit.cshtml" />
     <Content Include="Views\ClassSubjectTables\Index.cshtml" />
+    <Content Include="Views\ExamTables\Create.cshtml" />
+    <Content Include="Views\ExamTables\Delete.cshtml" />
+    <Content Include="Views\ExamTables\Details.cshtml" />
+    <Content Include="Views\ExamTables\Edit.cshtml" />
+    <Content Include="Views\ExamTables\Index.cshtml" />
+    <Content Include="Views\MarksTables\Create.cshtml" />
+    <Content Include="Views\MarksTables\Delete.cshtml" />
+    <Content Include="Views\MarksTables\Details.cshtml" />
+    <Content Include="Views\MarksTables\Edit.cshtml" />
+    <Content Include="Views\MarksTables\Index.cshtml" />
+    <Content Include="Views\TimeTableTables\Create.cshtml" />
+    <Content Include="Views\TimeTableTables\Delete.cshtml" />
+    <Content Include="Views\TimeTableTables\Details.cshtml" />
+    <Content Include="Views\TimeTableTables\Edit.cshtml" />
+    <Content Include="Views\TimeTableTables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

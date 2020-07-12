@@ -11,7 +11,8 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ProgramTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,13 +23,21 @@ namespace SchoolDBAccess
             this.StudentTables = new HashSet<StudentTable>();
             this.SubmissionTables = new HashSet<SubmissionTable>();
         }
-    
+
+        [Key]
+        [Display(Name = "Program ID")]
         public int ProgramID { get; set; }
+        [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
+        [Display(Name = "Program")]
         public string Name { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Start Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> StartDate { get; set; }
+        [Display(Name = "Status")]
         public Nullable<bool> IsActive { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnnualTable> AnnualTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

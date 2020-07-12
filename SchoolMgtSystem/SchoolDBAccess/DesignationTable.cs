@@ -11,7 +11,8 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DesignationTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,16 @@ namespace SchoolDBAccess
         {
             this.StaffTables = new HashSet<StaffTable>();
         }
-    
+
+        [Key]
+        [Display(Name = "Designation ID")]
         public int DesignationID { get; set; }
+        [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
         public string Title { get; set; }
+        [Display(Name = "Status")]
         public Nullable<bool> IsActive { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StaffTable> StaffTables { get; set; }
         public virtual UserTable UserTable { get; set; }

@@ -11,7 +11,8 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class UserTypeTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +20,14 @@ namespace SchoolDBAccess
         {
             this.UserTables = new HashSet<UserTable>();
         }
-    
+
+        [Key]
+        [Display(Name = "User Type ID")]
         public int UserTypeID { get; set; }
+        [Display(Name = "Type")]
         public string TypeName { get; set; }
         public string Description { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserTable> UserTables { get; set; }
     }

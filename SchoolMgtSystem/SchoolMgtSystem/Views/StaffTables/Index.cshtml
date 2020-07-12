@@ -1,0 +1,147 @@
+﻿@model IEnumerable<SchoolDBAccess.StaffTable>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasicSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qualification)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomePhoneNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Doyouhaveadisability)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisabilityDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Areyoutakinganymedication)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MedicationDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Doyouhaveacriminalrecord)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CriminalRecordDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegistrationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesignationTable.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserTable.FullName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BasicSalary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qualification)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Photo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomePhoneNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doyouhaveadisability)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisabilityDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Areyoutakinganymedication)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedicationDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doyouhaveacriminalrecord)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CriminalRecordDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegistrationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DesignationTable.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserTable.FullName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StaffID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StaffID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StaffID })
+        </td>
+    </tr>
+}
+
+</table>

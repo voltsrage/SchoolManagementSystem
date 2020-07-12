@@ -1,0 +1,82 @@
+﻿@model SchoolDBAccess.StudentPromotionTable
+
+@{
+    ViewBag.Title = "Student Promotions";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student Promotion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PromoteDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PromoteDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnnualFree)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnnualFree)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPromote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPromote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsSubmitFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsSubmitFee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassTable.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgramSession.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgramSession.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionTable.SectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SectionTable.SectionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentTable.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentTable.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentPromoteID }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</p>

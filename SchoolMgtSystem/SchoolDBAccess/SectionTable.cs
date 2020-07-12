@@ -11,7 +11,8 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class SectionTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +20,14 @@ namespace SchoolDBAccess
         {
             this.StudentPromotionTables = new HashSet<StudentPromotionTable>();
         }
-    
+
+        [Key]
+        [Display(Name = "Section ID")]
         public int SectionID { get; set; }
+        [Display(Name = "Section")]
         public string SectionName { get; set; }
-        public Nullable<int> UserID { get; set; }
-    
+        public int UserID { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentPromotionTable> StudentPromotionTables { get; set; }
         public virtual UserTable UserTable { get; set; }

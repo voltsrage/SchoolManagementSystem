@@ -11,7 +11,8 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class SubmissionTable
     {
         public int SubmissionFeeID { get; set; }
@@ -20,7 +21,11 @@ namespace SchoolDBAccess
         public Nullable<int> StudentID { get; set; }
         public Nullable<double> Amount { get; set; }
         public Nullable<int> ProgramID { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Submission Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> SubmissionDate { get; set; }
+        [Display(Name = "Fees Month")]
         public string FeesMonth { get; set; }
         public string Description { get; set; }
     

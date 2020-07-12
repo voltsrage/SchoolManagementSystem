@@ -11,7 +11,8 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ProgramSession
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,15 +21,24 @@ namespace SchoolDBAccess
             this.ExamSettingTables = new HashSet<ExamSettingTable>();
             this.StudentPromotionTables = new HashSet<StudentPromotionTable>();
         }
-    
+
+        [Key]
+        [Display(Name = "Program Session ID")]
         public int ProgramSessionID { get; set; }
+        [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
+        [Display(Name = "Session ID")]
         public Nullable<int> SessionID { get; set; }
+        [Display(Name = "Program ID")]
         public Nullable<int> ProgramID { get; set; }
+        [Display(Name = "Program Session")]
         public string Title { get; set; }
+        [Display(Name = "Registration Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> RegDate { get; set; }
         public string Description { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamSettingTable> ExamSettingTables { get; set; }
         public virtual ProgramTable ProgramTable { get; set; }

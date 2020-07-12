@@ -11,7 +11,8 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ClassSubjectTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,13 +21,19 @@ namespace SchoolDBAccess
             this.MarksTables = new HashSet<MarksTable>();
             this.TimeTableTables = new HashSet<TimeTableTable>();
         }
-    
+
+        [Key]
+        [Display(Name = " Clas Subject ID")]
         public int ClassSubjectID { get; set; }
+        [Display(Name = "Class ID")]
         public Nullable<int> ClassID { get; set; }
+        [Display(Name = "Subject ID")]
         public Nullable<int> SubjectID { get; set; }
+        [Display(Name = "Class Subject")]
         public string Name { get; set; }
+        [Display(Name = "Status")]
         public Nullable<bool> IsActive { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MarksTable> MarksTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

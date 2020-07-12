@@ -149,11 +149,18 @@
     <Compile Include="Controllers\ProgramSessionsController.cs" />
     <Compile Include="Controllers\ProgramTablesController.cs" />
     <Compile Include="Controllers\SessionTablesController.cs" />
+    <Compile Include="Controllers\StaffAttendanceTablesController.cs" />
+    <Compile Include="Controllers\StaffTablesController.cs" />
+    <Compile Include="Controllers\StudentAttendanceTablesController.cs" />
+    <Compile Include="Controllers\StudentPromotionTablesController.cs" />
+    <Compile Include="Controllers\StudentTablesController.cs" />
     <Compile Include="Controllers\SubjectTablesController.cs" />
+    <Compile Include="Controllers\SubmissionTablesController.cs" />
     <Compile Include="Controllers\TimeTableTablesController.cs" />
     <Compile Include="Controllers\UserTablesController.cs" />
     <Compile Include="Controllers\UserTypeTablesController.cs" />
     <Compile Include="CustomerFilters\UserAuthorizationFilterAttribute.cs" />
+    <Compile Include="FileHelper\UploadPhoto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2102,9 +2109,40 @@
     <Content Include="Views\TimeTableTables\Details.cshtml" />
     <Content Include="Views\TimeTableTables\Edit.cshtml" />
     <Content Include="Views\TimeTableTables\Index.cshtml" />
+    <Content Include="Views\StudentTables\Create.cshtml" />
+    <Content Include="Views\StudentTables\Delete.cshtml" />
+    <Content Include="Views\StudentTables\Details.cshtml" />
+    <Content Include="Views\StudentTables\Edit.cshtml" />
+    <Content Include="Views\StudentTables\Index.cshtml" />
+    <Content Include="Views\StudentPromotionTables\Create.cshtml" />
+    <Content Include="Views\StudentPromotionTables\Delete.cshtml" />
+    <Content Include="Views\StudentPromotionTables\Details.cshtml" />
+    <Content Include="Views\StudentPromotionTables\Edit.cshtml" />
+    <Content Include="Views\StudentPromotionTables\Index.cshtml" />
+    <Content Include="Views\SubmissionTables\Create.cshtml" />
+    <Content Include="Views\SubmissionTables\Delete.cshtml" />
+    <Content Include="Views\SubmissionTables\Details.cshtml" />
+    <Content Include="Views\SubmissionTables\Edit.cshtml" />
+    <Content Include="Views\SubmissionTables\Index.cshtml" />
+    <Content Include="Views\StudentAttendanceTables\Create.cshtml" />
+    <Content Include="Views\StudentAttendanceTables\Delete.cshtml" />
+    <Content Include="Views\StudentAttendanceTables\Details.cshtml" />
+    <Content Include="Views\StudentAttendanceTables\Edit.cshtml" />
+    <Content Include="Views\StudentAttendanceTables\Index.cshtml" />
+    <Content Include="Views\StaffTables\Create.cshtml" />
+    <Content Include="Views\StaffTables\Delete.cshtml" />
+    <Content Include="Views\StaffTables\Details.cshtml" />
+    <Content Include="Views\StaffTables\Edit.cshtml" />
+    <Content Include="Views\StaffTables\Index.cshtml" />
+    <Content Include="Views\StaffAttendanceTables\Create.cshtml" />
+    <Content Include="Views\StaffAttendanceTables\Delete.cshtml" />
+    <Content Include="Views\StaffAttendanceTables\Details.cshtml" />
+    <Content Include="Views\StaffAttendanceTables\Edit.cshtml" />
+    <Content Include="Views\StaffAttendanceTables\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\EmployeePhoto\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

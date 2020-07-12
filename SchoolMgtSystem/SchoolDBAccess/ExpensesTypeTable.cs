@@ -11,7 +11,8 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ExpensesTypeTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +20,14 @@ namespace SchoolDBAccess
         {
             this.ExpensesTables = new HashSet<ExpensesTable>();
         }
-    
+
+        [Key]
+        [Display(Name = "Expenses Type ID")]
         public int ExpensesTypeID { get; set; }
         public string Name { get; set; }
+        [Display(Name = "Status")]
         public Nullable<bool> IsActive { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExpensesTable> ExpensesTables { get; set; }
     }

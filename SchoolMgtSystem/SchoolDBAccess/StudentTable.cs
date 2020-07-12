@@ -11,7 +11,10 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class StudentTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,30 +26,52 @@ namespace SchoolDBAccess
             this.StudentPromotionTables = new HashSet<StudentPromotionTable>();
             this.SubmissionTables = new HashSet<SubmissionTable>();
         }
-    
+
+        [Key]
+        [Display(Name = "Student ID")]
         public int StudentID { get; set; }
         public Nullable<int> SessionID { get; set; }
         public Nullable<int> ProgramID { get; set; }
         public Nullable<int> ClassID { get; set; }
         public Nullable<int> UserID { get; set; }
+        [Display(Name = "Student")]
         public string Name { get; set; }
+        [Display(Name = "Father Name")]
         public string FatherName { get; set; }
+        [Display(Name = "Mother Name")]
         public string MotherName { get; set; }
+        [Display(Name = "DOB")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Gender { get; set; }
+        [Display(Name = "Student Id Card")]
         public string StudentIdCard { get; set; }
         public string Photo { get; set; }
+        [Display(Name = "admission Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> AdmissionDate { get; set; }
+        [Display(Name = "Previous School")]
         public string PreviousSchool { get; set; }
+        [Display(Name = "Previous Class Average")]
         public Nullable<double> PreviousClassAverage { get; set; }
+        [Display(Name = "Emmail Address")]
         public string EmailAddress { get; set; }
         public string Address { get; set; }
         public string Nationality { get; set; }
+        [Display(Name = "Father's Job")]
         public string FatherOccupation { get; set; }
+        [Display(Name = "Mother's Job")]
         public string MotherOccupation { get; set; }
+        [Display(Name = "Father's Phone No")]
         public string FatherPhoneNo_ { get; set; }
+        [Display(Name = "Mother's Phone No")]
         public string MotherPhoneNo_ { get; set; }
-    
+
+        [NotMapped]
+        public HttpPostedFileBase PhotoFile { get; set; }
+
         public virtual ClassTable ClassTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MarksTable> MarksTables { get; set; }

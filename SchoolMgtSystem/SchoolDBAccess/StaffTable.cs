@@ -11,7 +11,10 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class StaffTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,29 +24,60 @@ namespace SchoolDBAccess
             this.StaffAttendanceTables = new HashSet<StaffAttendanceTable>();
             this.TimeTableTables = new HashSet<TimeTableTable>();
         }
-    
+
+        [Key]
+        [Display(Name = "Staff ID")]
         public int StaffID { get; set; }
+        [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
+        [Display(Name = "Employee")]
+        [Required(ErrorMessage ="{0} Required Field!")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
+        [Display(Name = "Designation ID")]
         public Nullable<int> DesignationID { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
+        [Display(Name = "Contact No.")]
         public string ContactNo { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
+        [Display(Name = "Basic Salary")]
         public Nullable<double> BasicSalary { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
+        [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string Address { get; set; }
         public string Qualification { get; set; }
         public string Photo { get; set; }
         public string Description { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
+        [Display(Name = "Status")]
+        public bool IsActive { get; set; }
+        [Required(ErrorMessage = "{0} Required Field!")]
         public string Gender { get; set; }
+        [Display(Name = "Home Phone No.")]
+
+        [NotMapped]
+        public HttpPostedFileBase PhotoFile { get; set; }
+
         public string HomePhoneNo { get; set; }
-        public Nullable<bool> Doyouhaveadisability { get; set; }
+        [Display(Name = "Do you have a disability?")]
+        public bool Doyouhaveadisability { get; set; }
+        [Display(Name = "If yes? Disability details")]
         public string DisabilityDetails { get; set; }
-        public Nullable<bool> Areyoutakinganymedication { get; set; }
+        [Display(Name = "Are you taking any medication?")]
+        public bool Areyoutakinganymedication { get; set; }
+        [Display(Name = "If yes? Medication details")]
         public string MedicationDetails { get; set; }
-        public Nullable<bool> Doyouhaveacriminalrecord { get; set; }
+        [Display(Name = "Do you have a criminal record?")]
+        public bool Doyouhaveacriminalrecord { get; set; }
+        [Display(Name = "If yes? Criminal record details")]
         public string CriminalRecordDetails { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Registration Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> RegistrationDate { get; set; }
-    
+
         public virtual DesignationTable DesignationTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeSalaryTable> EmployeeSalaryTables { get; set; }

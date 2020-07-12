@@ -11,18 +11,31 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TimeTableTable
     {
+        [Key]
+        [Display(Name = "Time Table ID")]
         public int TimeTableID { get; set; }
+        [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
+        [Display(Name = "Staff ID")]
         public Nullable<int> StaffID { get; set; }
+        [Display(Name = "Start Time")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> StartTime { get; set; }
+        [Display(Name = "End Time")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> EndTime { get; set; }
         public string Day { get; set; }
+        [Display(Name = "Class Subject ID")]
         public Nullable<int> ClassSubjectID { get; set; }
+        [Display(Name = "Status")]
         public Nullable<bool> IsActive { get; set; }
-    
+
         public virtual ClassSubjectTable ClassSubjectTable { get; set; }
         public virtual StaffTable StaffTable { get; set; }
         public virtual UserTable UserTable { get; set; }

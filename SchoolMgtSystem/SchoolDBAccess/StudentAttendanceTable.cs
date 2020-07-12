@@ -11,14 +11,21 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class StudentAttendanceTable
     {
         public int StudentAttendanceID { get; set; }
         public int SessionID { get; set; }
         public Nullable<int> ClassID { get; set; }
         public Nullable<int> StudentID { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Attendance Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> AttendanceDate { get; set; }
+        [DataType(DataType.Time)]
+        [Display(Name = "Attendance Time")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.TimeSpan> AttendTime { get; set; }
     
         public virtual ClassTable ClassTable { get; set; }

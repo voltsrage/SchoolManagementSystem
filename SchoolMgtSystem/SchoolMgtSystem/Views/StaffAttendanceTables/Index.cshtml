@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SchoolDBAccess.StaffAttendanceTable>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AttendDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arrival)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeavingTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffTable.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AttendDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Arrival)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeavingTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffTable.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StaffAttendanceID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StaffAttendanceID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StaffAttendanceID })
+        </td>
+    </tr>
+}
+
+</table>

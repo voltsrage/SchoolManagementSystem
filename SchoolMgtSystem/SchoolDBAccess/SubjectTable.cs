@@ -11,7 +11,8 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class SubjectTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,14 +20,22 @@ namespace SchoolDBAccess
         {
             this.ClassSubjectTables = new HashSet<ClassSubjectTable>();
         }
-    
+
+        [Key]
+        [Display(Name = "Subject ID")]
         public int SubjectID { get; set; }
+        [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
+        [Display(Name = "Class")]
         public string Name { get; set; }
+        [Display(Name = "Registration Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> RegDate { get; set; }
+        [Display(Name = "Total Marks")]
         public Nullable<int> TotalMarks { get; set; }
         public string Description { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClassSubjectTable> ClassSubjectTables { get; set; }
         public virtual UserTable UserTable { get; set; }

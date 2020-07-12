@@ -11,16 +11,25 @@ namespace SchoolDBAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ExpensesTable
     {
+        [Key]
+        [Display(Name = "Expenses ID")]
         public int ExpensesID { get; set; }
+        [Display(Name = "Expenses Type ID")]
         public Nullable<int> ExpensesTypeID { get; set; }
+        [Display(Name = "Expenses Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> ExpenseDate { get; set; }
+        [DataType(DataType.Currency)]
         public Nullable<double> Amount { get; set; }
         public string Reason { get; set; }
+        [Display(Name = "User ID")]
         public Nullable<int> UserID { get; set; }
-    
+
         public virtual ExpensesTypeTable ExpensesTypeTable { get; set; }
         public virtual UserTable UserTable { get; set; }
     }
